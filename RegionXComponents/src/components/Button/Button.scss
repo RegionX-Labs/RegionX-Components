@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.buttonWrapper {
+  background-color: $greenDark;
+  border: none;
+  padding: 16px 24px;
+  border-radius:8px;
+  color: $white;
+  @include Montserrat;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  
+    &-icon-right {
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    &-error {
+    color: red;
+    }
+
+    &-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    }
+
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+/* Reset anchor styles */
+a.buttonWrapper {
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+cursor: pointer;
+}
