@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './styles/global.scss';
-import { Balance, Button, Input, LabelCard, Select, Slider } from './index'
+import { Balance, Button, Input, LabelCard, Select, Slider, RegionCard } from './index'
 import './App.css'
 import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <h1>RegionX components</h1>
       <LabelCard label='Active parachain' variant='transparent' pillStyle={true}/>
       <br />
@@ -37,21 +37,40 @@ function App() {
       </Button>
       <br />
       <br />
+      <Button color="redDark">
+        This is important
+      </Button>
+      <br />
+      <br />
+      <Button color="dark" rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
+        Back
+      </Button>
+      <br />
+      <br />
     <Input label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow" />}/>
       <br />
       <br />
     <Input label="Recipient" placeholder="Recipient Address" error leftIcon={<img src={Address} alt="Arrow" />}/>
       <br />
       <br />
-    <Slider initialValue={50} min={0} max={100} step={1} />
+    <Input label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow"/>}/>
+      <br />
+      <br />
+    <Slider initialValue={50} min={0} max={100} step={1} disabled={true}/>
+      <br />
+      <br />
+    <Slider initialValue={50} min={0} max={100} step={1}/>
     <br />
     <br />
-    <Select label="Select options" options={selectOptions} searchable={true} onChange={handleSelectChange} />
+    <Select label="Select options" options={selectOptions} searchable={true} onChange={handleSelectChange}/>
     <br />
     <br />
     <Balance name="Rococo Coretime" value="243" icon={BTC} />
+    <br />
+    <br />
+    <RegionCard />
   
-    </>
+    </div>
   )
 }
 

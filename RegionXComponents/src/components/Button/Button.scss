@@ -2,7 +2,7 @@
 @import '../../styles/mixins';
 
 .buttonWrapper {
-  background-color: $greenDark;
+  background-color: var(--button-color);
   border: none;
   padding: 16px 24px;
   border-radius:8px;
@@ -15,6 +15,8 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  transform: scale(1);
+  transition: all 0.2s linear;
   
     &-icon-right {
     margin-left: 8px;
@@ -36,6 +38,11 @@
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s linear;
   }
 }
 

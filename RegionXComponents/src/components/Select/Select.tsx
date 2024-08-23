@@ -1,5 +1,5 @@
 // src/components/Select/Select.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Select.scss';
 import Input from '../Input/Input'; 
 import ChevronDown from '../../assets/icons/chevronDown.svg';
@@ -21,7 +21,9 @@ interface SelectProps {
 const Select: React.FC<SelectProps> = ({ options, searchable = false, onChange, label, disabled = false }) => {
   const [searchTerm, setSearchTerm] = useState(''); 
   const [selectedValue, setSelectedValue] = useState<string | null>(null); // Selected value
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref to the dropdown element
+
 
   const handleOptionClick = (value: string) => {
     setSelectedValue(value);
@@ -33,10 +35,23 @@ const Select: React.FC<SelectProps> = ({ options, searchable = false, onChange, 
     option.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false); // Close the dropdown
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   const selectClassName = `selectBox ${disabled ? 'selectBox-disabled' : ''}`;
 
   return (
-    <div className="selectWrapper">
+    <div className="selectWrapper" ref={dropdownRef}>
       {/* Label */}
       {label && <label className="selectWrapper-label">{label}</label>}
 

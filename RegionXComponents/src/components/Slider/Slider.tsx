@@ -7,9 +7,10 @@ interface SliderProps {
   max?: number;
   step?: number;
   initialValue?: number;
+  disabled?: boolean;
 }
 
-const Slider: React.FC<SliderProps> = ({ min = 0, max = 100, step = 1, initialValue = 50 }) => {
+const Slider: React.FC<SliderProps> = ({ min = 0, max = 100, step = 1, initialValue = 50, disabled = false }) => {
   const [value, setValue] = useState(initialValue);
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,10 +19,6 @@ const Slider: React.FC<SliderProps> = ({ min = 0, max = 100, step = 1, initialVa
 
   return (
     <div className="sliderWrapper">
-      <div className="sliderWrapper-tooltip" style={{ left: `calc(${value}% + 5px)` }}>
-        {value}
-      </div>
-
       <input
         type="range"
         min={min}
@@ -30,8 +27,11 @@ const Slider: React.FC<SliderProps> = ({ min = 0, max = 100, step = 1, initialVa
         value={value}
         className="rangeInput"
         onChange={handleSliderChange}
+        {...(disabled && { disabled: true })} // Spread disabled if true
       />
-
+      <div className="sliderWrapper-tooltip" style={{ left: `calc(${value}% + 5px)` }}>
+        {value}
+      </div>
       <div className="sliderWrapper-track">
         <div
           className="sliderWrapper-filled"
