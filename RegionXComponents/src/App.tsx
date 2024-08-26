@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './styles/global.scss';
-import { Balance, Button, Input, LabelCard, Select, Slider, RegionCard } from './index'
+import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard } from './index'
 import './App.css'
 import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
@@ -47,13 +47,13 @@ function App() {
       </Button>
       <br />
       <br />
-    <Input label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow" />}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow" />}/>
       <br />
       <br />
-    <Input label="Recipient" placeholder="Recipient Address" error leftIcon={<img src={Address} alt="Arrow" />}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" error leftIcon={<img src={Address} alt="Arrow" />}/>
       <br />
       <br />
-    <Input label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow"/>}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow"/>}/>
       <br />
       <br />
     <Slider initialValue={50} min={0} max={100} step={1} disabled={true}/>

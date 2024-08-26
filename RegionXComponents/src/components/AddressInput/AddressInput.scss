@@ -37,6 +37,16 @@
         opacity: 1;
       }
     }
+
+    &-identicon {
+      opacity: 0.5;
+      display: flex;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+
+    }
   
     &-label {
       text-align: left;

@@ -27,7 +27,7 @@
     &-filled {
       background-color: $dark;
       height: 100%;
-      border-radius: 5px 0 0 5px;
+      border-radius: 5px;
       position: absolute;
       top: 4px;
       left: 0;
@@ -123,8 +123,7 @@
         display: none;
       }
       &::-webkit-slider-thumb {
-        color: $dark;
-        background-color: $dark;
+        display: none;
       }
     }
   }

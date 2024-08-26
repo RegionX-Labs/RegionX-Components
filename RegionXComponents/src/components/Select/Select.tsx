@@ -1,7 +1,7 @@
 // src/components/Select/Select.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import './Select.scss';
-import Input from '../Input/Input'; 
+import Input from '../AddressInput/AddressInput'; 
 import ChevronDown from '../../assets/icons/chevronDown.svg';
 
 interface SelectOption {

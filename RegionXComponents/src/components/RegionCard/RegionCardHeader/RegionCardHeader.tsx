@@ -1,6 +1,8 @@
 import React from 'react';
 import LabelCard from '../../LabelCard/LabelCard';
 import './RegionCardHeader.scss';
+import Identicon from '@polkadot/react-identicon';
+
 
 interface RegionCardHeaderProps {
     cardImage: string; //Car image URL
@@ -16,7 +18,7 @@ const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({cardImage, cardName,
     return (
         <>
       <div className='regionCardHeaderWrapper'>
-        <img src ={cardImage}/>
+        <Identicon value='16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU' size={80} />
         <div className='regionCardHeaderWrapper-data'>
             <h5>{cardName}</h5>
             <p>{startTime} | {endTime}</p>

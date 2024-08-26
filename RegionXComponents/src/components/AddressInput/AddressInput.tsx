@@ -1,6 +1,7 @@
 // src/components/Input/Input.tsx
-import React, { useState } from 'react';
-import './Input.scss';
+import React, { useState, useEffect } from 'react';
+import './AddressInput.scss';
+import Identicon from '@polkadot/react-identicon';
 
 interface InputProps {
   label?: string;
@@ -14,9 +15,9 @@ interface InputProps {
   onBlur?: () => void; // Blur handler
 }
 
-const Input: React.FC<InputProps> = ({
+const AddressInput: React.FC<InputProps> = ({
   label,
-  value,
+  value: controlledValue, // renamed value to controlledValue
   placeholder,
   disabled = false,
   error = false,
@@ -25,7 +26,19 @@ const Input: React.FC<InputProps> = ({
   onFocus,
   onBlur,
 }) => {
+  const [value, setValue] = useState(controlledValue || ''); // Local state for input value
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    setValue(controlledValue || ''); // Sync local value with controlledValue prop if it changes
+  }, [controlledValue]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value); // Update local state
+    if (onChange) {
+      onChange(e); // Call parent onChange if provided
+    }
+  };
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -46,17 +59,31 @@ const Input: React.FC<InputProps> = ({
   } ${isFocused ? 'inputField-focused' : ''}`;
 
   return (
-    <div className='componentWrapper'>
+    <div className="componentWrapper">
       {label && <label className={`inputWrapper-label ${error ? 'inputWrapper-error' : ''}`}>{label}</label>}
       <div className={`inputWrapper ${disabled ? 'inputWrapper-disabled' : ''} ${error ? 'inputWrapper-error' : ''} `}>
-        {leftIcon && <span className={`inputWrapper-icon-left ${isFocused ? 'inputWrapper-icon-left-focused' : ''}`}>{leftIcon}</span>}
+        {leftIcon && !value && (
+          <span className={`inputWrapper-icon-left ${isFocused ? 'inputWrapper-icon-left-focused' : ''}`}>
+            {leftIcon}
+          </span>
+        )}
+
+        {/* Conditionally render Identicon only when there is a value */}
+        {value && (
+          <Identicon
+            className="inputWrapper-identicon"
+            value={value}
+            size={30}
+          />
+        )}
+
         <input
           type="text"
-          value={value}
+          value={value} // Now this is the local state value
           placeholder={placeholder}
           disabled={disabled}
           className={inputClass}
-          onChange={onChange}
+          onChange={handleInputChange} // Update value on input change
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
@@ -65,4 +92,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default AddressInput;
