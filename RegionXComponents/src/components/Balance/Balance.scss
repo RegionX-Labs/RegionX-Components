@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.balanceWrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    @include Inter;
+    font-size: 16px;
+    line-height: 24px;
+    &-name {
+        padding-right: 10px;
+    }
+    &-value {
+        @include Montserrat;
+        padding: 15px;
+        background-color: $gray3;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        flex-direction: row;
+        border-radius: 8px;
+        width: fit-content;
+        p {
+            margin: 0;
+        }
+        img {
+            width: 100%;
+            padding: 0 10px;
+        }
+    }
+}
