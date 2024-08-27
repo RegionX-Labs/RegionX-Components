@@ -4,7 +4,7 @@ import './LabelCard.scss';
 
 interface ButtonProps {
   label: string;
-  color?: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'cardHeaderGreen';
+  color?: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
   variant?: 'primary' | 'transparent';
   pillStyle?: boolean;
   textColor?: 'light' | 'dark';

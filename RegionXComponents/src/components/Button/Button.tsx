@@ -9,14 +9,14 @@ interface ButtonProps {
   error?: boolean; // Add error styling if true
   href?: string; // If it's a link, this will be the URL
   disabled?: boolean; // Disable the button
-  color?: 'greenDark' | 'dark' | 'redDark' | 'gray3';
+  color?: 'greenPrimary' | 'dark' | 'redDark' | 'gray3';
   children: React.ReactNode; // Button content (label)
   rightIcon?: React.ReactElement; // Right icon as React component (e.g., SearchIcon)
 }
 
 const Button: React.FC<ButtonProps> = ({
   type = 'button',
-  color = 'greenDark',
+  color = 'greenPrimary',
   onClick,
   onSubmit,
   error = false,

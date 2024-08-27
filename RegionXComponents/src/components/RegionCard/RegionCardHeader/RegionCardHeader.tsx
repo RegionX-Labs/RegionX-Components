@@ -25,7 +25,7 @@ const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({cardName, startTime,
       </div>
       <div className='regionCardHeaderWrapper-labels'>
         <LabelCard textColor='dark' variant='primary' color='gray5' label={coreIndex} />
-        <LabelCard variant='primary' color='cardHeaderGreen' label={coreHours} />
+        <LabelCard variant='primary' color='greenPrimary' label={coreHours} />
       </div>
       </>
     );
