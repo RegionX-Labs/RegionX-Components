@@ -5,7 +5,6 @@ import Identicon from '@polkadot/react-identicon';
 
 
 interface RegionCardHeaderProps {
-    cardImage: string; //Car image URL
     cardName: string;   //Card Name
     startTime: string;  //start time value and time
     endTime: string;    //end time value and time
@@ -13,7 +12,7 @@ interface RegionCardHeaderProps {
     coreHours: string;
 }
 
-const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({cardImage, cardName, startTime, endTime, coreIndex, coreHours}) => {
+const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({cardName, startTime, endTime, coreIndex, coreHours}) => {
 
     return (
         <>
@@ -25,8 +24,8 @@ const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({cardImage, cardName,
         </div>
       </div>
       <div className='regionCardHeaderWrapper-labels'>
-        <LabelCard variant='primary' color='dark5' label={coreIndex} />
-        <LabelCard variant='primary' color='greenDark' label={coreHours} />
+        <LabelCard textColor='dark' variant='primary' color='gray5' label={coreIndex} />
+        <LabelCard variant='primary' color='cardHeaderGreen' label={coreHours} />
       </div>
       </>
     );
