@@ -7,8 +7,8 @@ import Address from './assets/icons/Address.svg';
 import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import BRD from './assets/icons/BRD.svg';
-
 import React from 'react';
+import { RegionCardData } from './components/RegionCard/RegionCard';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,6 +17,24 @@ function App() {
     { value: 'option2', label: 'Option 2', icon: BTC },
     { value: 'option3', label: 'Option 3', icon: ETH }
   ];
+
+  const testClickFunction = () => {
+    console.log('this is click on button');
+  }
+
+  const regionCardData: RegionCardData =  {
+    cardName: 'Card Name 1',
+    startTime: 'Start in 1 hr',
+    endTime: 'End in 9 hr',
+    coreIndex: 'Core index: 234',
+    coreHours: '4 hours',
+    coreOcupaccy: 30,
+    consumed: 24,
+    currentUsage: 69,
+    chainLabel: 'Coretime Chain',
+    chainColor: 'purpleDark',
+    onClick: testClickFunction,
+  }
 
   const handleSelectChange = (value: string) => {
     console.log('Selected:', value);
@@ -68,7 +86,11 @@ function App() {
     <Balance name="Rococo Coretime" value="243" icon={BTC} />
     <br />
     <br />
-    <RegionCard />
+    <RegionCard typeMarketplace={true} ownedRegion={false} regionCardData={regionCardData}/>
+
+    <br />
+    <br />
+    <RegionCard ownedRegion={false} regionCardData={regionCardData}/>
   
     </div>
   )

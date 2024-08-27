@@ -5,10 +5,11 @@ import './RegionCardTasks.scss';
 interface RegionCardTasksProps {
     coreOcupaccy: number;
     consumed: number;
-    currentUsage: number;
+    currentUsage?: number;
+    typeMarketplace?: boolean;
 }
 
-const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed, currentUsage}) => {
+const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed, currentUsage, typeMarketplace = false}) => {
 
     return (
         <>
@@ -22,10 +23,13 @@ const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed
                 <Slider initialValue={consumed} disabled />
                 <p><b>{consumed}%</b> Consumed</p>
             </div>
+            {!typeMarketplace ? ( 
             <div className='RegionCardTasks-slider'>
                 <Slider initialValue={currentUsage} disabled />
                 <p><b>{currentUsage}%</b> Current usage</p>
-            </div>
+            </div>)
+            : null
+            }
         <span className='disancer'></span>
         </>
     );
