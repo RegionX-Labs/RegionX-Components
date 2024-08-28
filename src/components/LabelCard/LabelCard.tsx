@@ -1,4 +1,3 @@
-// src/components/Button.tsx
 import React from 'react';
 import './LabelCard.scss';
 
@@ -12,7 +11,7 @@ interface ButtonProps {
 
 const LabelCard: React.FC<ButtonProps> = ({ label, variant = 'primary', color = 'yellowDark', pillStyle = false, textColor = 'light' }) => {
   return (
-    <div className={`LableCardWrapper ${textColor} ${variant} ${variant === 'transparent' ? `${color}` : ''} ${pillStyle ? 'pill' : ''} `} style={{ '--label-color': `var(--${color})` } as React.CSSProperties}>
+    <div className={`LabelCardWrapper ${textColor} ${variant} ${variant === 'transparent' ? `${color}` : ''} ${pillStyle ? 'pill' : ''} `} style={{ '--label-color': `var(--${color})` } as React.CSSProperties}>
       {label}
     </div>
   );
