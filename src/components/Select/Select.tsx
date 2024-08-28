@@ -1,47 +1,58 @@
-// src/components/Select/Select.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import './Select.scss';
 import Input from '../AddressInput/AddressInput'; 
 import ChevronDown from '../../assets/icons/chevronDown.svg';
-
-interface SelectOption {
-  value: string;
-  label: string;
-  icon?: string;
-}
+import { SelectOption } from '../../types/types';
 
 interface SelectProps {
-  options: SelectOption[]; 
-  searchable?: boolean; 
+  options: SelectOption[];
+  searchable?: boolean;
   onChange?: (value: string) => void;
-  label?: string; 
-  disabled?: boolean; 
+  label?: string;
+  disabled?: boolean;
+  selectedValue?: string | null;
+  showOnlySelectedIcon?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({ options, searchable = false, onChange, label, disabled = false }) => {
-  const [searchTerm, setSearchTerm] = useState(''); 
-  const [selectedValue, setSelectedValue] = useState<string | null>(null); // Selected value
+const Select: React.FC<SelectProps> = ({
+  options,
+  searchable = false,
+  onChange,
+  label,
+  disabled = false,
+  selectedValue = null,
+  showOnlySelectedIcon = false,
+}) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selected, setSelected] = useState<string | null>(selectedValue);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null); // Ref to the dropdown element
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (selectedValue) {
+      setSelected(selectedValue);
+    }
+  }, [selectedValue]);
 
   const handleOptionClick = (value: string) => {
-    setSelectedValue(value);
+    setSelected(value);
     setIsDropdownOpen(false);
-    if (onChange) onChange(value); 
+    if (onChange) onChange(value);
   };
 
   const filteredOptions = options.filter(option =>
     option.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const selectedOption = options.find(option => option.value === selected);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false); // Close the dropdown
+        setIsDropdownOpen(false);
       }
     };
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -52,15 +63,17 @@ const Select: React.FC<SelectProps> = ({ options, searchable = false, onChange, 
 
   return (
     <div className="selectWrapper" ref={dropdownRef}>
-      {/* Label */}
       {label && <label className="selectWrapper-label">{label}</label>}
-
-      {/* Select box to toggle dropdown */}
       <div className={selectClassName} onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}>
-        {selectedValue
-          ? options.find(option => option.value === selectedValue)?.label
-          : 'Select an option'}
-        <span className="selectBox-arrow"><img src={ChevronDown} alt="arrow down"/></span>
+        {selectedOption ? (
+          <div className="selectedOptionDisplay">
+            {selectedOption.icon && <img src={selectedOption.icon} alt={selectedOption.label} className="optionIcon" />}
+            {!showOnlySelectedIcon && <span>{selectedOption.label}</span>}
+          </div>
+        ) : 'Select an option'}
+        <span className="selectBox-arrow">
+          <img src={ChevronDown} alt="arrow down" />
+        </span>
       </div>
 
       {isDropdownOpen && !disabled && (
@@ -76,8 +89,8 @@ const Select: React.FC<SelectProps> = ({ options, searchable = false, onChange, 
 
           <ul className="selectDropdown-optionList">
             {filteredOptions.map(option => (
-              <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`selectDropdown-optionList-optionItem ${option.value === selectedValue ? 'selected' : ''}`}>
-                {option.icon && <img src={`${option.icon}`} alt={option.label} className="optionIcon" />}
+              <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`selectDropdown-optionList-optionItem ${option.value === selected ? 'selected' : ''}`}>
+                {option.icon && <img src={option.icon} alt={option.label} className="optionIcon" />}
                 {option.label}
               </li>
             ))}

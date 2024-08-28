@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './styles/global.scss';
-import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard } from './index'
+import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard, AmountInput } from './index'
 import './App.css'
 import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
@@ -8,12 +8,11 @@ import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import BRD from './assets/icons/BRD.svg';
 import React from 'react';
-import { RegionCardData } from './components/RegionCard/RegionCard';
+import { RegionCardData } from './types/types';
 
 function App() {
-  // const [count, setCount] = useState(0)
   const selectOptions = [
-    { value: 'option1', label: 'Option 1',},
+    { value: 'option1', label: 'Option 1', icon: BRD },
     { value: 'option2', label: 'Option 2', icon: BTC },
     { value: 'option3', label: 'Option 3', icon: ETH }
   ];
@@ -80,6 +79,15 @@ function App() {
     <Slider initialValue={50} min={0} max={100} step={1}/>
     <br />
     <br />
+    <AmountInput
+      currencyOptions={selectOptions}
+      onAmountChange={(amount) => console.log('Amount:', amount)}
+      onCurrencyChange={(currency) => console.log('Currency:', currency)}
+      placeholder='0'
+      label='Amount input'
+    />  
+    <br />
+    <br />
     <Select label="Select options" options={selectOptions} searchable={true} onChange={handleSelectChange}/>
     <br />
     <br />
@@ -91,7 +99,7 @@ function App() {
     <br />
     <br />
     <RegionCard ownedRegion={false} regionCardData={regionCardData}/>
-  
+
     </div>
   )
 }

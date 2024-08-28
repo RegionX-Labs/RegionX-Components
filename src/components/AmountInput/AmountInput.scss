@@ -1,0 +1,76 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.amountInputWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    align-items: self-start;
+    justify-content: flex-start;
+    border-radius: 4px;
+    
+    &-form {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .selectWrapper {
+            max-width: 70px;
+            flex: 1;
+            border: 0;
+            border-radius: 0;
+            margin: 0;
+            .selectBox {
+                border: none;
+                background-color: $gray3;
+                border-radius: 6px 0 0 6px;
+                height: 48px;
+                box-sizing: border-box;
+            }
+            .selectDropdown {
+                width: 300px;
+            }
+        }
+        
+        .amountInputField {
+            flex: 2;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            line-height: 24px;
+            @include Montserrat;
+            text-align: left;
+            border: 1px solid $gray3;
+            height: 48px;
+            box-sizing: border-box;
+            border-radius: 0 6px 6px 0;
+        
+            &:focus {
+              outline: none;
+              border: 2px solid $dark;
+            }
+          }
+        
+          &.singleInput .amountInputField {
+            flex: 1;
+          }
+    }
+
+  
+
+
+    &-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: $dark;
+        @include Montserrat;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+      }
+  }
+  
