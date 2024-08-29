@@ -33,7 +33,7 @@
       
   .selectBox {
     padding: 10px;
-    border: 2px solid $dark;
+    border: 1px solid $gray3;
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
@@ -48,7 +48,7 @@
     }
   
     &:hover {
-      border-color: #999;
+      border-color: $black;
     }
   
     &-disabled {
@@ -96,7 +96,7 @@
         border: none;
         input {
             border: none;
-            border-bottom: 2px solid $gray3;
+            border-bottom: 1px solid $gray3;
         }
     }
   

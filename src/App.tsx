@@ -6,13 +6,13 @@ import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
 import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
-import BRD from './assets/icons/BRD.svg';
+import KSM from './assets/icons/KSM.svg';
 import React from 'react';
 import { RegionCardData } from './types/types';
 
 function App() {
   const selectOptions = [
-    { value: 'option1', label: 'Option 1', icon: BRD },
+    { value: 'option1', label: 'Option 1', icon: KSM },
     { value: 'option2', label: 'Option 2', icon: BTC },
     { value: 'option3', label: 'Option 3', icon: ETH }
   ];

@@ -34,10 +34,13 @@ const AmountInput: React.FC<AmountInputProps> = ({
   }, [currencyOptions, onCurrencyChange]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^0-9]/g, ''); // Blocking e input
-    setAmount(value);
-    if (onAmountChange) onAmountChange(value);
+    const value = e.target.value.replace(/[^0-9.]/g, ''); // Allow only numbers and a period
+    if (value === '' || /^\d*\.?\d*$/.test(value)) { // Ensure it's a valid number or decimal
+      setAmount(value);
+      if (onAmountChange) onAmountChange(value);
+    }
   };
+  
 
   const handleCurrencyChange = (value: string) => {
     setCurrency(value);
