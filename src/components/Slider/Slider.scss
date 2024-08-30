@@ -118,13 +118,12 @@
     }
   
     &:disabled {
+      cursor: not-allowed;
       & ~ .sliderWrapper-track {
         .sliderWrapper-filled {
           background-color: $sliderDisabled; 
         }
       }
-
-      cursor: not-allowed;
       & ~ .sliderWrapper-tooltip {
         display: none;
       }
