@@ -1,0 +1,114 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.tableRow {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid $gray3;
+    flex-wrap: wrap;
+    @include Montserrat;
+    font-size: 16px;
+    line-height: 24px;
+  
+    &-cell {
+      flex: 1; 
+      padding: 10px;
+      min-width: 40px; 
+      box-sizing: border-box;
+      text-align: left;
+      
+      &.checkboxCell {
+        flex: 0 0 40px;
+        width: 40px;
+      }
+
+      &.exstricIdCell {
+        flex: 1; 
+        min-width: 100px;
+        color: $greenPrimary;
+      }
+      &.accountCell {
+        flex: 3; 
+        min-width: 200px; 
+        color: $greenPrimary;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .accountCell-icons {
+        .identicon {
+            z-index: 10;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-color: white;
+        }
+    }
+      &:nth-child(4) { //Core
+        flex: 1;
+        min-width: 80px;
+      }
+  
+      &:nth-child(5) { //Price(KSM)
+        flex: 2;
+        min-width: 120px;
+      }
+      &:nth-child(6) { //SalesType
+        flex: 2;
+        min-width: 120px;
+      }
+  
+      &:nth-child(7) { //Timestamp
+        flex: 1.5;
+        min-width: 100px;
+      }
+
+    //   input[type="checkbox"] {
+    //     position: absolute;
+    //     opacity: 0;
+    //     width: 0;
+    //     height: 0;
+    //   }
+  
+    //   label {
+    //     width: 20px;
+    //     height: 20px;
+    //     border: 1px solid $gray3; 
+    //     border-radius: 4px; 
+    //     cursor: pointer;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     position: relative;
+    //   }
+  
+    //   input[type="checkbox"]:checked + label::after {
+    //     content: ' ';
+    //     background-image: url('../../../../src/assets/icons/Check.svg');
+    //     background-size: 60%;
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     font-size: 12px; 
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     width: 22px;
+    //     height: 22px;
+    //     transform: translate(-50%, -50%);
+    //     background-color: $black;
+    //     text-align: center;
+    //     border-radius: 4px;
+    //   }
+    }
+  
+    &-selected {
+      background-color: #F2F2F0;
+    }
+  
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+  }
+  
