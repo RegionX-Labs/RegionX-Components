@@ -17,12 +17,3 @@ export interface RegionCardData {
     chainColor?: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
     onClick?: () => void;
 }
-
-export type SearchTerms = {
-  ExstricID: string;
-  Account: string;
-  Core: string;
-  "Price(KSM)": string;
-  SalesType: string;
-  Timestamp: string;
-};

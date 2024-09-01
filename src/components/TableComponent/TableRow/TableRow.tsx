@@ -1,63 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TableRow.scss';
-// import CheckIcon from '../../../../src/assets/icons/Check.svg';
 import Identicon from '@polkadot/react-identicon';
 
 interface TableRowProps {
-  data: {
-    ExstricID: string;
-    Account: string;
-    Core: number;
-    "Price(KSM)": number;
-    SalesType: string;
-    Timestamp: string;
-  };
-  onSelectRow?: (selected: boolean) => void; // Callback for row selection
+  data: Record<string, any>;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ data, onSelectRow }) => {
-//   const [isSelected, setIsSelected] = useState(false);
-
-//   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const isChecked = e.target.checked;
-//     setIsSelected(isChecked);
-//     if (onSelectRow) {
-//       onSelectRow(isChecked);
-//     }
-//   };
-
-  function formatAccountString(account: string): string {
-    if (account.length <= 19) {
-      return account;
-    }
+const TableRow: React.FC<TableRowProps> = ({ data }) => {
+  const formatAccountString = (account: string): string => {
+    if (account.length <= 19) return account;
     const firstPart = account.slice(0, 15);
     const lastPart = account.slice(-4);
     return `${firstPart}...${lastPart}`;
-  }
+  };
 
   return (
-    <div className='tableRow'>
-    {/* <div className={`tableRow ${isSelected ? 'tableRow-selected' : ''}`}> */}
-      {/* <div className="tableRow-cell checkboxCell">
-      <input
-          type="checkbox"
-          id={`checkbox-${data.ExstricID}`}
-          checked={isSelected}
-          onChange={handleCheckboxChange}
-        />
-        <label htmlFor={`checkbox-${data.ExstricID}`}></label>
-      </div> */}
-      <div className="tableRow-cell exstricIdCell">{data.ExstricID}</div>
-      <div className="tableRow-cell accountCell">
-        <span className='accountCell-icons'>
-            <Identicon value={data.Account} size={20} className="identicon"/>
-        </span>
-        {formatAccountString(data.Account)}
+    <div className="tableRow">
+      {Object.keys(data).map((key, index) => (
+        <div key={index} className={`tableRow-cell ${data[key]?.tableCellType}`}>
+          {data[key]?.tableCellType === 'IdenticonCell' ? (
+            <>
+              <span className='accountCell-icons'>
+                <Identicon value={data[key].data} size={20} className="identicon"/>
+              </span>
+              <a href={data[key].link}>{formatAccountString(data[key].data)}</a>
+            </>
+          ) : (
+            data[key]?.data || data[key]
+          )}
         </div>
-      <div className="tableRow-cell">{data.Core}</div>
-      <div className="tableRow-cell">{data["Price(KSM)"]}</div>
-      <div className="tableRow-cell">{data.SalesType}</div>
-      <div className="tableRow-cell">{data.Timestamp}</div>
+      ))}
     </div>
   );
 };

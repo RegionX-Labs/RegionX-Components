@@ -37,40 +37,80 @@ function App() {
 
   const exampleTableData = [
     {
-      ExstricID: 'EX123456',
-      Account: '16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+      ExstricID: {
+        tableCellType:'primaryGreenCell',
+        data:'EX123456'
+      },
+      Account: {
+        tableCellType: 'IdenticonCell',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'url.com'
+      },
+      testrow1: 'dsdsdss',
       Core: 72,
       "Price(KSM)": 0.342,
       SalesType: 'bulk',
       Timestamp: '5 days ago'
     },
     {
-      ExstricID: 'EX654321',
-      Account: '16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+      ExstricID: {
+        tableCellType:'primaryGreenCell',
+        data:'EX123456'
+      },
+      Account: {
+        tableCellType: 'IdenticonCell',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'url.com'
+      },
+      testrow1: 'dsdsdsd',
       Core: 150,
       "Price(KSM)": 1.045,
       SalesType: 'retail',
       Timestamp: '2 days ago'
     },
     {
-      ExstricID: 'EX789012',
-      Account: '3J98t1WpEZ...NQW',
+      ExstricID: {
+        tableCellType:'primaryGreenCell',
+        data:'EX123456'
+      },
+      Account: {
+        tableCellType: 'IdenticonCell',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'url.com'
+      },
+      testrow1: 'dsdsdsd',
       Core: 95,
       "Price(KSM)": 0.587,
       SalesType: 'bulk',
       Timestamp: '1 week ago'
     },
     {
-      ExstricID: 'EX345678',
-      Account: 'bc1qw508d6q...vr4g',
+      ExstricID: {
+        tableCellType:'primaryGreenCell',
+        data:'EX123456'
+      },
+      Account: {
+        tableCellType: 'IdenticonCell',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'url.com'
+      },
+      testrow1: 'sad',
       Core: 120,
       "Price(KSM)": 0.745,
       SalesType: 'retail',
       Timestamp: '3 days ago'
     },
     {
-      ExstricID: 'EX987654',
-      Account: '12tZ1zY1g5...PbY6U',
+      ExstricID: {
+        tableCellType:'primaryGreenCell',
+        data:'EX123456'
+      },
+      Account: {
+        tableCellType: 'IdenticonCell',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'url.com'
+      },
+      testrow1: 'aabb',
       Core: 58,
       "Price(KSM)": 0.213,
       SalesType: 'bulk',
