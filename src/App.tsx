@@ -75,6 +75,7 @@ function App() {
       Account: {
         cellType: 'address',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0'
       },
       testrow1: {
         cellType: 'text',

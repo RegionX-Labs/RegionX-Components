@@ -12,42 +12,13 @@
     line-height: 24px;
   
     &-cell {
+      display: flex;
       flex: 1; 
       padding: 10px;
       min-width: 40px; 
       box-sizing: border-box;
       text-align: left;
-      
-      &.checkboxCell {
-        flex: 0 0 40px;
-        width: 40px;
-      }
 
-      &.primaryGreenCell {
-        flex: 1; 
-        min-width: 100px;
-        color: $greenPrimary;
-      }
-      &.IdenticonCell {
-        flex: 2; 
-        color: $greenPrimary;
-        padding-left: 30px;
-        position: relative;
-        a {
-            color: $greenPrimary;
-        }
-      }
-
-      .accountCell-icons {
-        .identicon {
-            z-index: 10;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-            background-color: white;
-        }
-        }
     }
   }
   
