@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './styles/global.scss';
 import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard, AmountInput, TableComponent } from './index'
 import './App.css'
@@ -8,7 +7,7 @@ import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
 import React from 'react';
-import { RegionCardData, SelectOption } from './types/types';
+import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {
   const selectOptions: SelectOption[] = [
@@ -35,87 +34,100 @@ function App() {
     onClick: testClickFunction,
   }
 
-  const exampleTableData = [
+  const exampleTableData: Array<Record<string, TableData>> = [
     {
       ExstricID: {
-        cellType:'primaryGreenCell',
-        data:'EX123456'
+        cellType:'link',
+        data:'EX123456',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
       },
       Account: {
-        cellType: 'IdenticonCell',
+        cellType: 'address',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
-        link: 'url.com'
       },
-      testrow1: 'dsdsdss',
-      Core: 72,
-      "Price(KSM)": 0.342,
-      SalesType: 'bulk',
-      Timestamp: '5 days ago'
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "72"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "0.342"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '5 days ago'
+      }
     },
     {
       ExstricID: {
-        cellType:'primaryGreenCell',
-        data:'EX123456'
+        cellType:'link',
+        data:'EX54396',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
       },
       Account: {
-        cellType: 'IdenticonCell',
+        cellType: 'address',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
-        link: 'url.com'
       },
-      testrow1: 'dsdsdsd',
-      Core: 150,
-      "Price(KSM)": 1.045,
-      SalesType: 'retail',
-      Timestamp: '2 days ago'
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "32"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "1.5"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '1 day ago'
+      }
     },
     {
       ExstricID: {
-        cellType:'primaryGreenCell',
-        data:'EX123456'
+        cellType:'link',
+        data:'EX123456',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
       },
       Account: {
-        cellType: 'IdenticonCell',
+        cellType: 'address',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
-        link: 'url.com'
       },
-      testrow1: 'dsdsdsd',
-      Core: 95,
-      "Price(KSM)": 0.587,
-      SalesType: 'bulk',
-      Timestamp: '1 week ago'
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "72"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "0.342"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '5 days ago'
+      }
     },
-    {
-      ExstricID: {
-        cellType:'primaryGreenCell',
-        data:'EX123456'
-      },
-      Account: {
-        cellType: 'IdenticonCell',
-        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
-        link: 'url.com'
-      },
-      testrow1: 'sad',
-      Core: 120,
-      "Price(KSM)": 0.745,
-      SalesType: 'retail',
-      Timestamp: '3 days ago'
-    },
-    {
-      ExstricID: {
-        CellType:'primaryGreenCell',
-        data:'EX123456'
-      },
-      Account: {
-        cellType: 'IdenticonCell',
-        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
-        link: 'url.com'
-      },
-      testrow1: 'aabb',
-      Core: 58,
-      "Price(KSM)": 0.213,
-      SalesType: 'bulk',
-      Timestamp: '4 hours ago'
-    }
   ];
   
 

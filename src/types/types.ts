@@ -19,7 +19,7 @@ export interface RegionCardData {
 }
 
 export type TableData = {
-  cellType?: 'primaryGreenCell' | 'IdenticonCell';
+  cellType: 'text' | 'link' | 'address';
   data: string;
   link?: string;
 }
