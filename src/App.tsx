@@ -8,10 +8,10 @@ import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
 import React from 'react';
-import { RegionCardData } from './types/types';
+import { RegionCardData, SelectOption } from './types/types';
 
 function App() {
-  const selectOptions = [
+  const selectOptions: SelectOption[] = [
     { value: 'option1', label: 'Option 1', icon: KSM },
     { value: 'option2', label: 'Option 2', icon: BTC },
     { value: 'option3', label: 'Option 3', icon: ETH }
@@ -38,11 +38,11 @@ function App() {
   const exampleTableData = [
     {
       ExstricID: {
-        tableCellType:'primaryGreenCell',
+        cellType:'primaryGreenCell',
         data:'EX123456'
       },
       Account: {
-        tableCellType: 'IdenticonCell',
+        cellType: 'IdenticonCell',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
         link: 'url.com'
       },
@@ -54,11 +54,11 @@ function App() {
     },
     {
       ExstricID: {
-        tableCellType:'primaryGreenCell',
+        cellType:'primaryGreenCell',
         data:'EX123456'
       },
       Account: {
-        tableCellType: 'IdenticonCell',
+        cellType: 'IdenticonCell',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
         link: 'url.com'
       },
@@ -70,11 +70,11 @@ function App() {
     },
     {
       ExstricID: {
-        tableCellType:'primaryGreenCell',
+        cellType:'primaryGreenCell',
         data:'EX123456'
       },
       Account: {
-        tableCellType: 'IdenticonCell',
+        cellType: 'IdenticonCell',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
         link: 'url.com'
       },
@@ -86,11 +86,11 @@ function App() {
     },
     {
       ExstricID: {
-        tableCellType:'primaryGreenCell',
+        cellType:'primaryGreenCell',
         data:'EX123456'
       },
       Account: {
-        tableCellType: 'IdenticonCell',
+        cellType: 'IdenticonCell',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
         link: 'url.com'
       },
@@ -102,11 +102,11 @@ function App() {
     },
     {
       ExstricID: {
-        tableCellType:'primaryGreenCell',
+        CellType:'primaryGreenCell',
         data:'EX123456'
       },
       Account: {
-        tableCellType: 'IdenticonCell',
+        cellType: 'IdenticonCell',
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
         link: 'url.com'
       },

@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import './TableComponent.scss';
 import { TableRow } from './index';
-import { SearchTerms } from '../../types/types';
 import SearchIcon from '../../assets/icons/Search.svg';
-
-interface TableProps {
-  data: Array<Record<string, any>>;
-}
+import { TableProps } from '../../types/types';
 
 const TableComponent: React.FC<TableProps> = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data);
@@ -36,7 +32,7 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
     <div className="tableWrapper">
       <div className="tableHeader">
         {Object.keys(data[0] || {}).map((key, index) => (
-          <div key={index} className={`tableHeader-cell ${data[0][key]?.tableCellType}`}>
+          <div key={index} className={`tableHeader-cell ${data[0][key]?.cellType}`}>
             <p>{key}</p>
             <input
               type="text"

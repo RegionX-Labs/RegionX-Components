@@ -17,8 +17,8 @@ const TableRow: React.FC<TableRowProps> = ({ data }) => {
   return (
     <div className="tableRow">
       {Object.keys(data).map((key, index) => (
-        <div key={index} className={`tableRow-cell ${data[key]?.tableCellType}`}>
-          {data[key]?.tableCellType === 'IdenticonCell' ? (
+        <div key={index} className={`tableRow-cell ${data[key]?.cellType}`}>
+          {data[key]?.cellType === 'IdenticonCell' ? (
             <>
               <span className='accountCell-icons'>
                 <Identicon value={data[key].data} size={20} className="identicon"/>
