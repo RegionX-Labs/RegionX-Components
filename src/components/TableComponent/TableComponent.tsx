@@ -22,7 +22,7 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
   const filterData = (searchTerms: Record<string, string>) => {
     const filtered = data.filter(row =>
       Object.keys(searchTerms).every(
-        key => String(row[key]).toLowerCase().includes(searchTerms[key].toLowerCase())
+        key => String(row[key]?.data || '').toLowerCase().includes(searchTerms[key].toLowerCase())
       )
     );
     setFilteredData(filtered);
