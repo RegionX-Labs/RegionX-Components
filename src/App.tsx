@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import './styles/global.scss';
-import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard, AmountInput } from './index'
+import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard, AmountInput, TableComponent } from './index'
 import './App.css'
 import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
@@ -8,10 +7,10 @@ import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
 import React from 'react';
-import { RegionCardData } from './types/types';
+import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {
-  const selectOptions = [
+  const selectOptions: SelectOption[] = [
     { value: 'option1', label: 'Option 1', icon: KSM },
     { value: 'option2', label: 'Option 2', icon: BTC },
     { value: 'option3', label: 'Option 3', icon: ETH }
@@ -34,6 +33,104 @@ function App() {
     chainColor: 'purpleDark',
     onClick: testClickFunction,
   }
+
+  const exampleTableData: Array<Record<string, TableData>> = [
+    {
+      ExstricID: {
+        cellType:'link',
+        data:'EX123456',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
+      },
+      Account: {
+        cellType: 'address',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+      },
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "72"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "0.342"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '5 days ago'
+      }
+    },
+    {
+      ExstricID: {
+        cellType:'link',
+        data:'EX54396',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
+      },
+      Account: {
+        cellType: 'address',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0'
+      },
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "32"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "1.5"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '1 day ago'
+      }
+    },
+    {
+      ExstricID: {
+        cellType:'link',
+        data:'EX123456',
+        link: 'https://polkadot.subscan.io/extrinsic/22377599-0',
+      },
+      Account: {
+        cellType: 'address',
+        data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
+      },
+      testrow1: {
+        cellType: 'text',
+        data: 'dsdsdss',
+      },
+      Core: {
+        cellType: 'text',
+        data: "72"
+      },
+      "Price(KSM)": {
+        cellType: 'text',
+        data: "0.342"
+      },
+      SalesType: {
+        cellType: 'text',
+        data: 'bulk'
+      },
+      Timestamp: {
+        cellType: 'text',
+        data: '5 days ago'
+      }
+    },
+  ];
+  
 
   const handleSelectChange = (value: string) => {
     console.log('Selected:', value);
@@ -64,19 +161,22 @@ function App() {
       </Button>
       <br />
       <br />
-    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow" />}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Address" />}/>
       <br />
       <br />
-    <AddressInput label="Recipient" placeholder="Recipient Address" error leftIcon={<img src={Address} alt="Arrow" />}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" error leftIcon={<img src={Address} alt="Address" />}/>
       <br />
       <br />
-    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Arrow"/>}/>
+    <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Adsress"/>}/>
       <br />
       <br />
     <Slider initialValue={50} min={0} max={100} step={1} disabled={true}/>
       <br />
       <br />
     <Slider initialValue={50} min={0} max={100} step={1}/>
+    <br />
+    <br />
+    <TableComponent data={exampleTableData} />
     <br />
     <br />
     <AmountInput

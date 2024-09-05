@@ -17,3 +17,13 @@ export interface RegionCardData {
     chainColor?: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
     onClick?: () => void;
 }
+
+export type TableData = {
+  cellType: 'text' | 'link' | 'address';
+  data: string;
+  link?: string;
+}
+
+export interface TableProps {
+  data: Array<Record<string, TableData>>;
+}

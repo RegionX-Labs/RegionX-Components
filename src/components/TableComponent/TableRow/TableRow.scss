@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.tableRow {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid $gray3;
+    flex-wrap: wrap;
+    @include Montserrat;
+    font-size: 16px;
+    line-height: 24px;
+  
+    &-cell {
+      display: flex;
+      flex: 1; 
+      padding: 10px;
+      min-width: 40px; 
+      box-sizing: border-box;
+      text-align: left;
+
+    }
+  }
+  

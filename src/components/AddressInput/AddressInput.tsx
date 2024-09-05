@@ -79,11 +79,11 @@ const AddressInput: React.FC<InputProps> = ({
 
         <input
           type="text"
-          value={value} // Now this is the local state value
+          value={value} 
           placeholder={placeholder}
           disabled={disabled}
           className={inputClass}
-          onChange={handleInputChange} // Update value on input change
+          onChange={handleInputChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
