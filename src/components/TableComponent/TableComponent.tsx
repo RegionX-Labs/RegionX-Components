@@ -32,7 +32,7 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
     <div className={styles["tableWrapper"]}>
       <div className={styles["tableHeader"]}>
         {Object.keys(data[0] || {}).map((key, index) => (
-          <div key={index} className={`tableHeader-cell ${data[0][key]?.cellType}`}>
+          <div key={index} className={`${styles['tableHeader-cell']} ${data[0][key]?.cellType ? styles[data[0][key]?.cellType] : ''}`}>
             <p>{key}</p>
             <input
               type="text"

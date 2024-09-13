@@ -54,16 +54,16 @@ const AddressInput: React.FC<InputProps> = ({
     }
   };
 
-  const inputClass = `inputField ${disabled ? 'inputField-disabled' : ''} ${leftIcon ? 'inputField-leftIcon' : ''} ${
-    error ? 'inputField-error' : ''
-  } ${isFocused ? 'inputField-focused' : ''}`;
+  const inputClass = `${styles.inputField} ${disabled ? styles['inputField-disabled'] : ''} ${leftIcon ? styles['inputField-leftIcon'] : ''} ${
+    error ? styles['inputField-error'] : ''
+  } ${isFocused ? styles['inputField-focused'] : ''}`;
 
   return (
     <div className={styles["componentWrapper"]}>
-      {label && <label className={`inputWrapper-label ${error ? 'inputWrapper-error' : ''}`}>{label}</label>}
-      <div className={`inputWrapper ${disabled ? 'inputWrapper-disabled' : ''} ${error ? 'inputWrapper-error' : ''} `}>
+      {label && <label className={`${styles['inputWrapper-label']} ${error ? styles['inputWrapper-error'] : ''}`}>{label}</label>}
+      <div className={`${styles.inputWrapper} ${disabled ? styles['inputWrapper-disabled'] : ''} ${error ? styles['inputWrapper-error'] : ''}`}>
         {leftIcon && !value && (
-          <span className={`inputWrapper-icon-left ${isFocused ? 'inputWrapper-icon-left-focused' : ''}`}>
+          <span className={`${styles['inputWrapper-icon-left']} ${isFocused ? styles['inputWrapper-icon-left-focused'] : ''}`}>
             {leftIcon}
           </span>
         )}

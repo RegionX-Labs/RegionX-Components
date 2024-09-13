@@ -59,7 +59,7 @@ const Select: React.FC<SelectProps> = ({
     };
   }, [dropdownRef]);
 
-  const selectClassName = styles[`selectBox ${disabled ? 'selectBox-disabled' : ''}`];
+  const selectClassName = `${styles.selectBox} ${disabled ? styles['selectBox-disabled'] : ''}`;
 
   return (
     <div className={styles["selectWrapper"]} ref={dropdownRef}>
@@ -89,7 +89,7 @@ const Select: React.FC<SelectProps> = ({
 
           <ul className={styles["selectDropdown-optionList"]}>
             {filteredOptions.map(option => (
-              <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`selectDropdown-optionList-optionItem ${option.value === selected ? 'selected' : ''}`}>
+              <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`${styles['selectDropdown-optionList-optionItem']} ${option.value === selected ? styles['selected'] : ''}`}>
                 {option.icon && <img src={option.icon} alt={option.label} className={styles["optionIcon"]} />}
                 {option.label}
               </li>

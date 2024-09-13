@@ -1,6 +1,6 @@
 // src/components/Button/Button.tsx
 import React from 'react';
-import './Button.module.scss';
+import styles from './Button.module.scss';
 
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset' | 'link'; // Determines type of button
@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   rightIcon, 
 }) => {
-  const buttonClass = `buttonWrapper ${error ? 'buttonWrapper-error' : ''} ${disabled ? 'buttonWrapper-disabled' : ''}`;
+  const buttonClass = `${styles.buttonWrapper} ${error ? styles['buttonWrapper-error'] : ''} ${disabled ? styles['buttonWrapper-disabled'] : ''}`;
 
   if (type === 'link' && href) {
     return (
@@ -38,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
           '--button-color': `var(--${color})` 
         } as React.CSSProperties}>
         {children}
-        {rightIcon && <span className="buttonWrapper-icon-right">{rightIcon}</span>}
+        {rightIcon && <span className={styles["buttonWrapper-icon-right"]}>{rightIcon}</span>}
       </a>
     );
   }
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
       } as React.CSSProperties}
     >
       {children}
-      {rightIcon && <span className="buttonWrapper-icon-right">{rightIcon}</span>}
+      {rightIcon && <span className={styles["buttonWrapper-icon-right"]}>{rightIcon}</span>}
     </button>
   );
 };
