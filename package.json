@@ -1,13 +1,19 @@
 {
-  "name": "package.json",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@region-x/components",
+  "version": "0.0.6",
   "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npx tsc -p tsconfig.json",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@polkadot/react-identicon": "^3.9.1",
