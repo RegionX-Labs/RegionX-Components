@@ -1,25 +1,36 @@
 {
   "name": "@region-x/components",
-  "version": "0.0.6",
+  "version": "0.0.12",
   "type": "module",
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+      },
+    "./style.css": "./dist/style.css"
+  },
   "files": [
-    "dist"
+    "dist",
+    "dist/style.css" 
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npx tsc -p tsconfig.json",
+    "build": "tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@polkadot/react-identicon": "^3.9.1",
+    "@types/node": "^22.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "vite-plugin-dts": "^4.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

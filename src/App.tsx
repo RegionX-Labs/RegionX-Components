@@ -6,7 +6,6 @@ import Address from './assets/icons/Address.svg';
 import BTC from './assets/icons/BTC.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
-import React from 'react';
 import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {

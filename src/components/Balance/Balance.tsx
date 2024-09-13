@@ -1,5 +1,5 @@
 // src/components/Slider/Slider.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import './Balance.scss';
 
 interface BalanceProps {
