@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Select.scss';
+import styles from './Select.module.scss';
 import Input from '../AddressInput/AddressInput'; 
 import ChevronDown from '../../assets/icons/chevronDown.svg';
 import { SelectOption } from '../../types/types';
@@ -59,25 +59,25 @@ const Select: React.FC<SelectProps> = ({
     };
   }, [dropdownRef]);
 
-  const selectClassName = `selectBox ${disabled ? 'selectBox-disabled' : ''}`;
+  const selectClassName = styles[`selectBox ${disabled ? 'selectBox-disabled' : ''}`];
 
   return (
-    <div className="selectWrapper" ref={dropdownRef}>
-      {label && <label className="selectWrapper-label">{label}</label>}
+    <div className={styles["selectWrapper"]} ref={dropdownRef}>
+      {label && <label className={styles["selectWrapper-label"]}>{label}</label>}
       <div className={selectClassName} onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}>
         {selectedOption ? (
-          <div className="selectedOptionDisplay">
-            {selectedOption.icon && <img src={selectedOption.icon} alt={selectedOption.label} className="optionIcon" />}
+          <div className={styles["selectedOptionDisplay"]}>
+            {selectedOption.icon && <img src={selectedOption.icon} alt={selectedOption.label} className={styles["optionIcon"]} />}
             {!showOnlySelectedIcon && <span>{selectedOption.label}</span>}
           </div>
         ) : 'Select an option'}
-        <span className="selectBox-arrow">
+        <span className={styles["selectBox-arrow"]}>
           <img src={ChevronDown} alt="arrow down" />
         </span>
       </div>
 
       {isDropdownOpen && !disabled && (
-        <div className="selectDropdown">
+        <div className={styles["selectDropdown"]}>
           {searchable && (
             <Input
               value={searchTerm}
@@ -87,10 +87,10 @@ const Select: React.FC<SelectProps> = ({
             />
           )}
 
-          <ul className="selectDropdown-optionList">
+          <ul className={styles["selectDropdown-optionList"]}>
             {filteredOptions.map(option => (
               <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`selectDropdown-optionList-optionItem ${option.value === selected ? 'selected' : ''}`}>
-                {option.icon && <img src={option.icon} alt={option.label} className="optionIcon" />}
+                {option.icon && <img src={option.icon} alt={option.label} className={styles["optionIcon"]} />}
                 {option.label}
               </li>
             ))}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './TableComponent.scss';
+import styles from './TableComponent.module.scss';
 import { TableRow } from './index';
 import SearchIcon from '../../assets/icons/Search.svg';
 import { TableProps } from '../../types/types';
@@ -29,8 +29,8 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
   };
 
   return (
-    <div className="tableWrapper">
-      <div className="tableHeader">
+    <div className={styles["tableWrapper"]}>
+      <div className={styles["tableHeader"]}>
         {Object.keys(data[0] || {}).map((key, index) => (
           <div key={index} className={`tableHeader-cell ${data[0][key]?.cellType}`}>
             <p>{key}</p>
@@ -39,13 +39,13 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
               value={searchTerms[key]}
               onChange={(e) => handleSearchChange(e, key)}
             />
-            <img src={SearchIcon} alt="Search" className="searchIcon" />
+            <img src={SearchIcon} alt="Search" className={styles["searchIcon"]} />
           </div>
         ))}
       </div>
-      <div className="tableBody">
+      <div className={styles["tableBody"]}>
         {filteredData.length === 0 ? (
-          <div className="noResultsMessage">No results found.</div>
+          <div className={styles["noResultsMessage"]}>No results found.</div>
         ) : (
           filteredData.map((row, rowIndex) => (
             <TableRow

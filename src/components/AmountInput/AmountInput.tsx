@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select from '../Select/Select';
-import './AmountInput.scss';
+import styles from './AmountInput.module.scss';
 
 interface SelectOption {
   value: string;
@@ -48,9 +48,9 @@ const AmountInput: React.FC<AmountInputProps> = ({
   };
 
   return (
-    <div className="amountInputWrapper">
-        {label && <label className="amountInputWrapper-label">{label}</label>}
-        <div className='amountInputWrapper-form'>
+    <div className={styles["amountInputWrapper"]}>
+        {label && <label className={styles["amountInputWrapper-label"]}>{label}</label>}
+        <div className={styles["amountInputWrapper-form"]}>
             <Select
                 options={currencyOptions}
                 onChange={handleCurrencyChange}
@@ -63,7 +63,7 @@ const AmountInput: React.FC<AmountInputProps> = ({
                 value={amount}
                 onChange={handleAmountChange}
                 placeholder={placeholder}
-                className="amountInputField"
+                className={styles["amountInputField"]}
             />
         </div>
     </div>

@@ -1,6 +1,6 @@
 // src/components/Input/Input.tsx
 import React, { useState, useEffect } from 'react';
-import './AddressInput.scss';
+import styles from './AddressInput.module.scss';
 import Identicon from '@polkadot/react-identicon';
 
 interface InputProps {
@@ -59,7 +59,7 @@ const AddressInput: React.FC<InputProps> = ({
   } ${isFocused ? 'inputField-focused' : ''}`;
 
   return (
-    <div className="componentWrapper">
+    <div className={styles["componentWrapper"]}>
       {label && <label className={`inputWrapper-label ${error ? 'inputWrapper-error' : ''}`}>{label}</label>}
       <div className={`inputWrapper ${disabled ? 'inputWrapper-disabled' : ''} ${error ? 'inputWrapper-error' : ''} `}>
         {leftIcon && !value && (
@@ -71,7 +71,7 @@ const AddressInput: React.FC<InputProps> = ({
         {/* Conditionally render Identicon only when there is a value */}
         {value && (
           <Identicon
-            className="inputWrapper-identicon"
+            className={styles["inputWrapper-identicon"]}
             value={value}
             size={30}
           />

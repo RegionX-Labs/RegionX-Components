@@ -1,8 +1,7 @@
 import React from 'react';
-import './Cell.scss';
+import styles from './Cell.module.scss';
 import Identicon from '@polkadot/react-identicon';
 import { TableData } from '../../../types/types';
-
 
 const Cell: React.FC<{ cell: TableData }> = ({ cell }) => {
 
@@ -21,8 +20,8 @@ const Cell: React.FC<{ cell: TableData }> = ({ cell }) => {
     case 'address': 
       return (
         <>
-          <span className='addressCell-icons'>
-            <Identicon value={cell.data} size={20} className="identicon"/>
+          <span className={styles.addressCellIcons}>
+            <Identicon value={cell.data} size={20} className={styles.identicon}/>
           </span>
           <a target='_target' href={cell.link}>{formatAccountString(cell.data)}</a>
         </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './LabelCard.scss';
+import styles from './LabelCard.module.scss';
 
 interface ButtonProps {
   label: string;
@@ -11,7 +11,10 @@ interface ButtonProps {
 
 const LabelCard: React.FC<ButtonProps> = ({ label, variant = 'primary', color = 'yellowDark', pillStyle = false, textColor = 'light' }) => {
   return (
-    <div className={`LabelCardWrapper ${textColor} ${variant} ${variant === 'transparent' ? `${color}` : ''} ${pillStyle ? 'pill' : ''} `} style={{ '--label-color': `var(--${color})` } as React.CSSProperties}>
+    <div
+      className={`${styles.LabelCardWrapper} ${styles[textColor]} ${styles[variant]} ${variant === 'transparent' ? styles[color] : ''} ${pillStyle ? styles.pill : ''}`}
+      style={{ '--label-color': `var(--${color})` } as React.CSSProperties}
+    >
       {label}
     </div>
   );
