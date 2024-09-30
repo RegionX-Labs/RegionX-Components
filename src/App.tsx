@@ -9,7 +9,7 @@ import KSM from './assets/icons/KSM.svg';
 import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {
-  const selectOptions: SelectOption[] = [
+  const selectOptions: SelectOption<string>[] = [
     { value: 'option1', label: 'Option 1', icon: KSM },
     { value: 'option2', label: 'Option 2', icon: DOT },
     { value: 'option3', label: 'Option 3', icon: ETH }
@@ -131,7 +131,7 @@ function App() {
   ];
   
 
-  const handleSelectChange = (value: string) => {
+  const handleSelectChange = <T,>(value: T) => {
     console.log('Selected:', value);
   };
 

@@ -4,17 +4,17 @@ import Input from '../AddressInput/AddressInput';
 import DownArrow from '../../assets/icons/DownArrow.svg';
 import { SelectOption } from '../../types/types';
 
-interface SelectProps {
-  options: SelectOption[];
+interface SelectProps<T> {
+  options: SelectOption<T | null>[];
   searchable?: boolean;
-  onChange?: (value: string) => void;
+  onChange?: (value: T | null) => void;
   label?: string;
   disabled?: boolean;
-  selectedValue?: string | null;
+  selectedValue?: T | null;
   showOnlySelectedIcon?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({
+const Select = <T,>({
   options,
   searchable = false,
   onChange,
@@ -22,9 +22,9 @@ const Select: React.FC<SelectProps> = ({
   disabled = false,
   selectedValue = null,
   showOnlySelectedIcon = false,
-}) => {
+}: SelectProps<T>) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selected, setSelected] = useState<string | null>(selectedValue);
+  const [selected, setSelected] = useState<T | null>(selectedValue);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ const Select: React.FC<SelectProps> = ({
     }
   }, [selectedValue]);
 
-  const handleOptionClick = (value: string) => {
+  const handleOptionClick = (value: T | null) => {
     setSelected(value);
     setIsDropdownOpen(false);
     if (onChange) onChange(value);
@@ -89,7 +89,7 @@ const Select: React.FC<SelectProps> = ({
 
           <ul className={styles["selectDropdown-optionList"]}>
             {filteredOptions.map(option => (
-              <li key={option.value} onClick={() => handleOptionClick(option.value)} className={`${styles['selectDropdown-optionList-optionItem']} ${option.value === selected ? styles['selected'] : ''}`}>
+              <li key={option.label} onClick={() => handleOptionClick(option.value)} className={`${styles['selectDropdown-optionList-optionItem']} ${option.value === selected ? styles['selected'] : ''}`}>
                 {option.icon && <img src={option.icon} alt={option.label} className={styles["optionIcon"]} />}
                 {option.label}
               </li>
