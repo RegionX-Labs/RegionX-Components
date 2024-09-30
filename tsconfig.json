@@ -1,25 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    /* The "typeRoots" configuration specifies the locations where 
-       TypeScript looks for type definitions (.d.ts files) to 
-       include in the compilation process.*/
-    "typeRoots": ["./dist/index.d.ts", "node_modules/@types"]
+    "target": "esnext",                      // Target ECMAScript version
+    "module": "esnext",                      // Target ES module system
+    "lib": ["dom", "dom.iterable", "esnext"], // Type definitions for standard library
+    "jsx": "react-jsx",                      // Enable JSX and React's new JSX transform
+    "moduleResolution": "node",              // Resolve node_modules
+    "skipLibCheck": true,                    // Skip checking of declaration files
+    "esModuleInterop": true,                 // Enable compatibility between CommonJS and ESModules
+    "allowSyntheticDefaultImports": true,    // Allow importing default exports from modules with no default
+    "strict": true,                          // Enable strict type checking
+    "forceConsistentCasingInFileNames": true,// Enforce consistent casing in imports
+    "noEmit": true,                          // Disable emitting files (handled by Rollup/Vite)
+    "isolatedModules": true,                 // Perform isolated transpilation of modules
+    "declaration": true,                     // Generate `.d.ts` declaration files
+    "declarationDir": "dist/types",          // Output directory for type declarations
+    "outDir": "dist",                        // Output directory for compiled files
+    "resolveJsonModule": true,               // Support importing .json files
+    "baseUrl": ".",                          // Base directory to resolve non-relative module names
+    "paths": {
+      "*": ["src/*"]                         // Path alias for resolving imports
+    }
   },
-  /* include /index.ts*/
-  "include": ["src", "./index.ts"]
+  "include": ["src"],                        // Include all source files from src directory
+  "exclude": ["node_modules", "dist"]        // Exclude node_modules and built files
 }
