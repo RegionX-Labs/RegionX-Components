@@ -8,7 +8,7 @@ interface BalanceProps {
   icon?: string;
 }
 
-const Slider: React.FC<BalanceProps> = ({ name, value, icon }) => {
+const Balance: React.FC<BalanceProps> = ({ name, value, icon }) => {
 
   return (
     <div className={styles["balanceWrapper"]}>
@@ -23,4 +23,4 @@ const Slider: React.FC<BalanceProps> = ({ name, value, icon }) => {
   );
 };
 
-export default Slider;
+export default Balance;

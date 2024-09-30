@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Select.module.scss';
 import Input from '../AddressInput/AddressInput'; 
-import ChevronDown from '../../assets/icons/chevronDown.svg';
+import DownArrow from '../../assets/icons/DownArrow.svg';
 import { SelectOption } from '../../types/types';
 
 interface SelectProps {
@@ -72,7 +72,7 @@ const Select: React.FC<SelectProps> = ({
           </div>
         ) : 'Select an option'}
         <span className={styles["selectBox-arrow"]}>
-          <img src={ChevronDown} alt="arrow down" />
+          <img src={DownArrow} alt="arrow down" />
         </span>
       </div>
 
