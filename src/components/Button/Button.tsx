@@ -60,7 +60,14 @@ const Button: React.FC<ButtonProps> = ({
         <Loading />
       }
       <span style={{ opacity: loading ? '0%' : '100%' }}>{children}</span>
-      {rightIcon && <span className={styles["buttonWrapper-icon-right"]}>{rightIcon}</span>}
+      {rightIcon && 
+        <span 
+          style={{ opacity: loading ? '0%' : '100%' }} 
+          className={styles["buttonWrapper-icon-right"]}
+        >
+          {rightIcon}
+        </span>
+      }
     </button>
   );
 };
