@@ -3,16 +3,15 @@ import { Balance, Button, AddressInput, LabelCard, Select, Slider, RegionCard, A
 import './App.css'
 import ArrowIcon from './assets/icons/Arrow.svg';
 import Address from './assets/icons/Address.svg';
-import BTC from './assets/icons/BTC.svg';
+import DOT from './assets/icons/DOT.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
-import React from 'react';
 import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {
-  const selectOptions: SelectOption[] = [
+  const selectOptions: SelectOption<string>[] = [
     { value: 'option1', label: 'Option 1', icon: KSM },
-    { value: 'option2', label: 'Option 2', icon: BTC },
+    { value: 'option2', label: 'Option 2', icon: DOT },
     { value: 'option3', label: 'Option 3', icon: ETH }
   ];
 
@@ -132,7 +131,7 @@ function App() {
   ];
   
 
-  const handleSelectChange = (value: string) => {
+  const handleSelectChange = <T,>(value: T) => {
     console.log('Selected:', value);
   };
 
@@ -191,7 +190,7 @@ function App() {
     <Select label="Select options" options={selectOptions} searchable={true} onChange={handleSelectChange}/>
     <br />
     <br />
-    <Balance name="Rococo Coretime" value="243" icon={BTC} />
+    <Balance name="Rococo Coretime" value="243" icon={DOT} />
     <br />
     <br />
     <RegionCard typeMarketplace={true} ownedRegion={false} regionCardData={regionCardData}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from '../../Slider/Slider';
-import './RegionCardTasks.scss';
+import styles from './RegionCardTasks.module.scss';
 
 interface RegionCardTasksProps {
     coreOcupaccy: number;
@@ -13,24 +13,24 @@ const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed
 
     return (
         <>
-        <span className='disancer'></span>
-            <p className='RegionCardTasks-headline'>Task: Unassinged</p>
-            <div className='RegionCardTasks-slider'>
+        <span className={styles["disancer"]}></span>
+            <p className={styles["RegionCardTasks-headline"]}>Task: Unassinged</p>
+            <div className={styles["RegionCardTasks-slider"]}>
                 <Slider initialValue={coreOcupaccy} disabled />
                 <p><b>{coreOcupaccy}%</b> Core ocupaccy</p>
             </div>
-            <div className='RegionCardTasks-slider'>
+            <div className={styles["RegionCardTasks-slider"]}>
                 <Slider initialValue={consumed} disabled />
                 <p><b>{consumed}%</b> Consumed</p>
             </div>
             {!typeMarketplace ? ( 
-            <div className='RegionCardTasks-slider'>
+            <div className={styles["RegionCardTasks-slider"]}>
                 <Slider initialValue={currentUsage} disabled />
                 <p><b>{currentUsage}%</b> Current usage</p>
             </div>)
             : null
             }
-        <span className='disancer'></span>
+        <span className={styles["disancer"]}></span>
         </>
     );
   };

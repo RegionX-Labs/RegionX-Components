@@ -1,5 +1,5 @@
 import React from 'react';
-import './TableRow.scss';
+import styles from './TableRow.module.scss';
 import Cell from '../Cell/Cell';
 
 interface TableRowProps {
@@ -8,9 +8,9 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ data }) => {
   return (
-    <div className="tableRow">
+    <div className={styles["tableRow"]}>
       {Object.keys(data).map((key, index) => (
-        <div key={index} className={`tableRow-cell`}>
+        <div key={index} className={styles[`tableRow-cell`]}>
           <Cell cell={data[key]} />
         </div>
       ))}

@@ -1,6 +1,6 @@
 // src/components/Slider/Slider.tsx
 import React, { useState } from 'react';
-import './Slider.scss';
+import styles from './Slider.module.scss';
 
 interface SliderProps {
   min?: number;
@@ -18,23 +18,23 @@ const Slider: React.FC<SliderProps> = ({ min = 0, max = 100, step = 1, initialVa
   };
 
   return (
-    <div className="sliderWrapper">
+    <div className={styles.sliderWrapper}>
       <input
         type="range"
         min={min}
         max={max}
         step={step}
         value={value}
-        className="rangeInput"
+        className={styles.rangeInput}
         onChange={handleSliderChange}
         {...(disabled && { disabled: true })} // Spread disabled if true
       />
-      <div className="sliderWrapper-tooltip" style={{ left: `calc(${value}% + 5px)` }}>
+      <div className={styles["sliderWrapper-tooltip"]} style={{ left: `calc(${value}% + 5px)` }}>
         {value}
       </div>
-      <div className="sliderWrapper-track">
+      <div className={styles["sliderWrapper-track"]}>
         <div
-          className="sliderWrapper-filled"
+          className={styles["sliderWrapper-filled"]}
           style={{ width: `${(value / max) * 100}%` }}
         ></div>
       </div>

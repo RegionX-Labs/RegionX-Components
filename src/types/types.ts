@@ -1,6 +1,6 @@
-export interface SelectOption {
-    value: string;
-    label?: string;
+export interface SelectOption<T> {
+    value: T;
+    label: string;
     icon?: string;
   }
 
