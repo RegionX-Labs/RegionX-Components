@@ -160,6 +160,11 @@ function App() {
       </Button>
       <br />
       <br />
+      <Button loading={true}>
+        Loading
+      </Button>
+      <br />
+      <br />
     <AddressInput label="Recipient" placeholder="Recipient Address" leftIcon={<img src={Address} alt="Address" />}/>
       <br />
       <br />
