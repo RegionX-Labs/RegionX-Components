@@ -9,6 +9,7 @@ interface ButtonProps {
   error?: boolean; // Add error styling if true
   href?: string; // If it's a link, this will be the URL
   disabled?: boolean; // Disable the button
+  loading?: boolean; // A loading animation and disables the button.
   color?: 'greenPrimary' | 'dark' | 'redDark' | 'gray3';
   children: React.ReactNode; // Button content (label)
   rightIcon?: React.ReactElement; // Right icon as React component (e.g., SearchIcon)
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   error = false,
   href,
   disabled = false,
+  loading = false,
   children,
   rightIcon, 
 }) => {
@@ -47,17 +49,39 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type === 'submit' ? 'submit' : 'button'}
       onClick={type === 'submit' ? onSubmit : onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       className={buttonClass}
       style={{ 
-        pointerEvents: disabled ? 'none' : 'auto', 
+        pointerEvents: disabled || loading ? 'none' : 'auto', 
         '--button-color': `var(--${color})` 
       } as React.CSSProperties}
     >
-      {children}
-      {rightIcon && <span className={styles["buttonWrapper-icon-right"]}>{rightIcon}</span>}
+      {loading &&
+        <Loading />
+      }
+      <span style={{ opacity: loading ? '0%' : '100%' }}>{children}</span>
+      {rightIcon && 
+        <span 
+          style={{ opacity: loading ? '0%' : '100%' }} 
+          className={styles["buttonWrapper-icon-right"]}
+        >
+          {rightIcon}
+        </span>
+      }
     </button>
   );
 };
+
+const Loading = () => {
+  return (
+    <div className={styles['loading']}>
+      <div></div> {/* Represents a DOT */}
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  )
+}
 
 export default Button;
