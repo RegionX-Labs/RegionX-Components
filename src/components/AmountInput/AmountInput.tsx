@@ -42,7 +42,8 @@ const AmountInput: React.FC<AmountInputProps> = ({
   };
   
 
-  const handleCurrencyChange = (value: string) => {
+  const handleCurrencyChange = (value: string | null) => {
+    if(!value) return;
     setCurrency(value);
     if (onCurrencyChange) onCurrencyChange(value);
   };
