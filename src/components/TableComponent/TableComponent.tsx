@@ -3,9 +3,11 @@ import styles from './TableComponent.module.scss';
 import { TableRow } from './index';
 import SearchIcon from '../../assets/icons/Search.svg';
 import { TableProps } from '../../types/types';
+import TablePagination from './Pagination';
 
-const TableComponent: React.FC<TableProps> = ({ data }) => {
+const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const [filteredData, setFilteredData] = useState(data);
+  const [displayedData, setDisplayedData] = useState(filteredData.slice(0, pageSize));
   const [searchTerms, setSearchTerms] = useState<Record<string, string>>(
     Object.keys(data[0] || {}).reduce((acc, key) => {
       acc[key] = '';
@@ -28,6 +30,10 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
     setFilteredData(filtered);
   };
 
+  const onPageChange = (page: number) => {
+    setDisplayedData(filteredData.slice((page - 1) * pageSize, page * pageSize));
+  }
+
   return (
     <div className={styles["tableWrapper"]}>
       <div className={styles["tableHeader"]}>
@@ -44,10 +50,10 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
         ))}
       </div>
       <div className={styles["tableBody"]}>
-        {filteredData.length === 0 ? (
+        {displayedData.length === 0 ? (
           <div className={styles["noResultsMessage"]}>No results found.</div>
         ) : (
-          filteredData.map((row, rowIndex) => (
+          displayedData.map((row, rowIndex) => (
             <TableRow
               key={rowIndex}
               data={row}
@@ -55,6 +61,7 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
           ))
         )}
       </div>
+      <TablePagination dataLength={filteredData.length} pageSize={pageSize} onPageChange={onPageChange} />
     </div>
   );
 };
