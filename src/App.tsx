@@ -180,7 +180,7 @@ function App() {
     <Slider initialValue={50} min={0} max={100} step={1}/>
     <br />
     <br />
-    <TableComponent data={exampleTableData} />
+    <TableComponent data={exampleTableData} pageSize={5} />
     <br />
     <br />
     <AmountInput
