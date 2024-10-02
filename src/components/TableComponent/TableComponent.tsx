@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TableComponent.module.scss';
 import { TableRow } from './index';
 import SearchIcon from '../../assets/icons/Search.svg';
@@ -29,6 +29,10 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
     );
     setFilteredData(filtered);
   };
+
+  useEffect(() => {
+    filterData(searchTerms);
+  }, [data]);
 
   const onPageChange = (page: number) => {
     setDisplayedData(filteredData.slice((page - 1) * pageSize, page * pageSize));
