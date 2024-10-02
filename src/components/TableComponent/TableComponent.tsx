@@ -27,7 +27,8 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const filterData = (searchTerms: Record<string, string>) => {
     const filtered = data.filter(row =>
       Object.keys(searchTerms).every(
-        key => String(row[key]?.data || '').toLowerCase().includes(searchTerms[key].toLowerCase())
+        key => String(row[key]?.data || '').toLowerCase().includes(searchTerms[key].toLowerCase()) 
+          || String(row[key]?.searchKey || '').toLowerCase().includes(searchTerms[key].toLowerCase()) 
       )
     );
     setFilteredData(filtered);

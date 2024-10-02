@@ -46,7 +46,8 @@ function App() {
       },
       testrow1: {
         cellType: 'jsx',
-        data: <p style={{color: 'red'}}>Test</p>,
+        data: <div><p style={{color: 'red'}}>Test</p></div>,
+        searchKey: 'Test'
       },
       Core: {
         cellType: 'text',

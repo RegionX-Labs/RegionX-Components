@@ -24,6 +24,9 @@ export type TableData = {
   cellType: 'text' | 'link' | 'address' | 'jsx';
   data: string | React.ReactElement;
   link?: string;
+  // A custom search key. Mainly useful for `jsx` cells since we can't usually do
+  // a regular search with them.
+  searchKey?: string;
 }
 
 export interface TableProps {
