@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import styles from './Pagination.module.scss';
 
 interface TablePaginationProps {
+    page: number;
+    setPage: (_page: number) => void,
     pageSize: number;
     dataLength: number;
     onPageChange: (page: number) => void;
 }
 
-const TablePagination: React.FC<TablePaginationProps> = ({ pageSize, dataLength, onPageChange }) => {
-    const [page, setPage] = useState(1);
+const TablePagination: React.FC<TablePaginationProps> = ({ page, setPage, pageSize, dataLength, onPageChange }) => {
 
     const handlePageChange = (change: -1 | 1) => {
         if(page + change < 1 || page + change > Math.ceil(dataLength / pageSize)) {

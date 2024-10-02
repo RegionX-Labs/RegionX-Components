@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import styles from './TableComponent.module.scss';
 import { TableRow } from './index';
 import SearchIcon from '../../assets/icons/Search.svg';
-import { TableProps } from '../../types/types';
+import { TableData, TableProps } from '../../types/types';
 import TablePagination from './Pagination';
 
 const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const [filteredData, setFilteredData] = useState(data);
   const [displayedData, setDisplayedData] = useState(filteredData.slice(0, pageSize));
+
+  const [page, setPage] = useState(1);
+
   const [searchTerms, setSearchTerms] = useState<Record<string, string>>(
     Object.keys(data[0] || {}).reduce((acc, key) => {
       acc[key] = '';
@@ -28,15 +31,20 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
       )
     );
     setFilteredData(filtered);
+    setDisplayedData(getPaginatedData(filtered, page));
   };
 
   useEffect(() => {
     filterData(searchTerms);
   }, [data]);
 
-  const onPageChange = (page: number) => {
-    setDisplayedData(filteredData.slice((page - 1) * pageSize, page * pageSize));
+  const onPageChange = (_page: number) => {
+    setPage(_page);
+    setDisplayedData(getPaginatedData(filteredData, _page));
   }
+
+  const getPaginatedData = (data: Record<string, TableData>[], page: number) => 
+    data.slice((page - 1) * pageSize, page * pageSize);
 
   return (
     <div className={styles["tableWrapper"]}>
@@ -65,7 +73,13 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
           ))
         )}
       </div>
-      <TablePagination dataLength={filteredData.length} pageSize={pageSize} onPageChange={onPageChange} />
+      <TablePagination 
+        page={page}
+        setPage={setPage}
+        dataLength={filteredData.length}
+        pageSize={pageSize}
+        onPageChange={onPageChange} 
+      />
     </div>
   );
 };
