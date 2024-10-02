@@ -67,7 +67,7 @@ const Select = <T,>({
       <div className={selectClassName} onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}>
         {selectedOption ? (
           <div className={styles["selectedOptionDisplay"]}>
-            {selectedOption.icon && <img src={selectedOption.icon} alt={selectedOption.label} className={styles["optionIcon"]} />}
+            {selectedOption.icon}
             {!showOnlySelectedIcon && <span>{selectedOption.label}</span>}
           </div>
         ) : 'Select an option'}
@@ -90,7 +90,7 @@ const Select = <T,>({
           <ul className={styles["selectDropdown-optionList"]}>
             {filteredOptions.map(option => (
               <li key={option.label} onClick={() => handleOptionClick(option.value)} className={`${styles['selectDropdown-optionList-optionItem']} ${option.value === selected ? styles['selected'] : ''}`}>
-                {option.icon && <img src={option.icon} alt={option.label} className={styles["optionIcon"]} />}
+                {option.icon}
                 {option.label}
               </li>
             ))}

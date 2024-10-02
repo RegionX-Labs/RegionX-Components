@@ -1,7 +1,9 @@
+import React from "react";
+
 export interface SelectOption<T> {
     value: T;
     label: string;
-    icon?: string;
+    icon?: React.ReactElement;
   }
 
 export interface RegionCardData {

@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Select from '../Select/Select';
 import styles from './AmountInput.module.scss';
-
-interface SelectOption {
-  value: string;
-  label: string;
-  icon?: string;
-}
+import { SelectOption } from 'types/types';
 
 interface AmountInputProps {
-  currencyOptions: SelectOption[]; // Options for the currency selector
+  currencyOptions: SelectOption<string>[]; // Options for the currency selector
   onAmountChange?: (amount: string) => void; // Callback for amount input change
   onCurrencyChange?: (currency: string) => void; // Callback for currency change
   placeholder?: string; 

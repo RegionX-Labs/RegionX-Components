@@ -10,9 +10,9 @@ import { RegionCardData, SelectOption, TableData } from './types/types';
 
 function App() {
   const selectOptions: SelectOption<string>[] = [
-    { value: 'option1', label: 'Option 1', icon: KSM },
-    { value: 'option2', label: 'Option 2', icon: DOT },
-    { value: 'option3', label: 'Option 3', icon: ETH }
+    { value: 'option1', label: 'Option 1', icon: <img src={KSM} width={24} style={{ margin: '0 .5rem'}} alt="arrow down" /> },
+    { value: 'option2', label: 'Option 2', icon: <img src={DOT} width={24} style={{ margin: '0.5rem'}} alt="arrow down" /> },
+    { value: 'option3', label: 'Option 3', icon: <img src={ETH} width={24} style={{ margin: '0 .5rem'}} alt="arrow down" /> }
   ];
 
   const testClickFunction = () => {
