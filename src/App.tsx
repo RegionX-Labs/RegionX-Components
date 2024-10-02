@@ -45,8 +45,8 @@ function App() {
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
       },
       testrow1: {
-        cellType: 'text',
-        data: 'dsdsdss',
+        cellType: 'jsx',
+        data: <p style={{color: 'red'}}>Test</p>,
       },
       Core: {
         cellType: 'text',

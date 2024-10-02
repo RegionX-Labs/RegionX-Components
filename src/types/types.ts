@@ -21,8 +21,8 @@ export interface RegionCardData {
 }
 
 export type TableData = {
-  cellType: 'text' | 'link' | 'address';
-  data: string;
+  cellType: 'text' | 'link' | 'address' | 'jsx';
+  data: string | React.ReactElement;
   link?: string;
 }
 

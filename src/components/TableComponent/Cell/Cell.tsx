@@ -21,11 +21,13 @@ const Cell: React.FC<{ cell: TableData }> = ({ cell }) => {
       return (
         <>
           <span className={styles.addressCellIcons}>
-            <Identicon value={cell.data} size={20} className={styles.identicon}/>
+            <Identicon value={cell.data as string} size={20} className={styles.identicon}/>
           </span>
-          <a target='_target' href={cell.link}>{formatAccountString(cell.data)}</a>
+          <a target='_target' href={cell.link}>{formatAccountString(cell.data as string)}</a>
         </>
       );
+    case 'jsx': 
+      return cell.data
     default:
       return null;
   }
