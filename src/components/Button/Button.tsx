@@ -2,6 +2,9 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
+type MainColors = 'greenPrimary' | 'dark' | 'redDark';
+type ColorOptions = MainColors | (string & {});
+
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset' | 'link'; // Determines type of button
   onClick?: () => void; // Click handler
@@ -10,7 +13,8 @@ interface ButtonProps {
   href?: string; // If it's a link, this will be the URL
   disabled?: boolean; // Disable the button
   loading?: boolean; // A loading animation and disables the button.
-  color?: 'greenPrimary' | 'dark' | 'redDark' | 'gray3';
+  color?: ColorOptions; // Background color
+  fullWidth?: boolean, // 100% button width
   children: React.ReactNode; // Button content (label)
   rightIcon?: React.ReactElement; // Right icon as React component (e.g., SearchIcon)
 }
@@ -23,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   error = false,
   href,
   disabled = false,
+  fullWidth = false,
   loading = false,
   children,
   rightIcon, 
@@ -37,8 +42,10 @@ const Button: React.FC<ButtonProps> = ({
         className={buttonClass}
         style={{ 
           pointerEvents: disabled ? 'none' : 'auto', 
-          '--button-color': `var(--${color})` 
-        } as React.CSSProperties}>
+          '--button-color': `var(--${color})`,
+          width: fullWidth ? '100%' : 'inherent'
+        } as React.CSSProperties}
+      >
         {children}
         {rightIcon && <span className={styles["buttonWrapper-icon-right"]}>{rightIcon}</span>}
       </a>
@@ -53,7 +60,8 @@ const Button: React.FC<ButtonProps> = ({
       className={buttonClass}
       style={{ 
         pointerEvents: disabled || loading ? 'none' : 'auto', 
-        '--button-color': `var(--${color})` 
+        '--button-color': `var(--${color})`,
+        width: fullWidth ? '100%' : 'inherent',
       } as React.CSSProperties}
     >
       {loading &&

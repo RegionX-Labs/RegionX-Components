@@ -142,10 +142,10 @@ function App() {
       <br />
       <LabelCard label='Active' variant='transparent' color='orangeDark' />
       <br />
-      <LabelCard label='Parachain' variant='primary'color='pinkDark' pillStyle={true}/>
+      <LabelCard label='Parachain' variant='primary' color='pinkDark' pillStyle={true}/>
       <br />
       <br />
-      <Button onClick={() => console.log('Arrow button clicked')} rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
+      <Button fullWidth={true} onClick={() => console.log('Arrow button clicked')} rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
         Next
       </Button>
       <br />
