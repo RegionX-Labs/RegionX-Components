@@ -160,7 +160,7 @@ function App() {
       </Button>
       <br />
       <br />
-      <Button loading={true} rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
+      <Button loading={true} color='#FCD34D' rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
         Loading
       </Button>
       <br />

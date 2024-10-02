@@ -60,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({
       className={buttonClass}
       style={{ 
         pointerEvents: disabled || loading ? 'none' : 'auto', 
-        '--button-color': `var(--${color})`,
+        '--button-color': color.startsWith('#') ? color: `var(--${color})`,
         width: fullWidth ? '100%' : 'inherent',
       } as React.CSSProperties}
     >
