@@ -45,8 +45,9 @@ function App() {
         data:'16ccn3xe5tAeR8kvzCRTcqHZjMJHvuF2pnLfTqyF1EmMusCU',
       },
       testrow1: {
-        cellType: 'text',
-        data: 'dsdsdss',
+        cellType: 'jsx',
+        data: <div><p style={{color: 'red'}}>Test</p></div>,
+        searchKey: 'Test'
       },
       Core: {
         cellType: 'text',
@@ -160,7 +161,7 @@ function App() {
       </Button>
       <br />
       <br />
-      <Button loading={true} rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
+      <Button loading={true} color='#FCD34D' rightIcon={<img src={ArrowIcon} alt="Arrow" />}>
         Loading
       </Button>
       <br />

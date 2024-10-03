@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TableComponent.module.scss';
 import { TableRow } from './index';
 import SearchIcon from '../../assets/icons/Search.svg';
-import { TableProps } from '../../types/types';
+import { TableData, TableProps } from '../../types/types';
 import TablePagination from './Pagination';
 
 const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const [filteredData, setFilteredData] = useState(data);
   const [displayedData, setDisplayedData] = useState(filteredData.slice(0, pageSize));
+
+  const [page, setPage] = useState(1);
+
   const [searchTerms, setSearchTerms] = useState<Record<string, string>>(
     Object.keys(data[0] || {}).reduce((acc, key) => {
       acc[key] = '';
@@ -24,15 +27,25 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const filterData = (searchTerms: Record<string, string>) => {
     const filtered = data.filter(row =>
       Object.keys(searchTerms).every(
-        key => String(row[key]?.data || '').toLowerCase().includes(searchTerms[key].toLowerCase())
+        key => String(row[key]?.data || '').toLowerCase().includes(searchTerms[key].toLowerCase()) 
+          || String(row[key]?.searchKey || '').toLowerCase().includes(searchTerms[key].toLowerCase()) 
       )
     );
     setFilteredData(filtered);
+    setDisplayedData(getPaginatedData(filtered, page));
   };
 
-  const onPageChange = (page: number) => {
-    setDisplayedData(filteredData.slice((page - 1) * pageSize, page * pageSize));
+  useEffect(() => {
+    filterData(searchTerms);
+  }, [data]);
+
+  const onPageChange = (_page: number) => {
+    setPage(_page);
+    setDisplayedData(getPaginatedData(filteredData, _page));
   }
+
+  const getPaginatedData = (data: Record<string, TableData>[], page: number) => 
+    data.slice((page - 1) * pageSize, page * pageSize);
 
   return (
     <div className={styles["tableWrapper"]}>
@@ -61,7 +74,13 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
           ))
         )}
       </div>
-      <TablePagination dataLength={filteredData.length} pageSize={pageSize} onPageChange={onPageChange} />
+      <TablePagination 
+        page={page}
+        setPage={setPage}
+        dataLength={filteredData.length}
+        pageSize={pageSize}
+        onPageChange={onPageChange} 
+      />
     </div>
   );
 };
