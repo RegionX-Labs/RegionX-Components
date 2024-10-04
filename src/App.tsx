@@ -6,7 +6,7 @@ import Address from './assets/icons/Address.svg';
 import DOT from './assets/icons/DOT.svg';
 import ETH from './assets/icons/ETH.svg';
 import KSM from './assets/icons/KSM.svg';
-import { RegionCardData, SelectOption, TableData } from './types/types';
+import { RegionData, SelectOption, TableData } from './types/types';
 
 function App() {
   const selectOptions: SelectOption<string>[] = [
@@ -19,14 +19,14 @@ function App() {
     console.log('this is click on button');
   }
 
-  const regionCardData: RegionCardData =  {
-    cardName: 'Card Name 1',
-    startTime: 'Start in 1 hr',
-    endTime: 'End in 9 hr',
-    coreIndex: 'Core index: 234',
-    coreHours: '4 hours',
+  const regionData: RegionData =  {
+    name: 'Region #2',
+    regionStart: 'Started 10 days ago',
+    regionEnd: 'Ends in 18 days',
+    coreIndex: 2,
+    duration: '28 days',
     coreOcupaccy: 30,
-    consumed: 24,
+    consumed: 34,
     currentUsage: 69,
     chainLabel: 'Coretime Chain',
     chainColor: 'purpleDark',
@@ -199,11 +199,11 @@ function App() {
     <Balance name="Rococo Coretime" value="243" icon={DOT} />
     <br />
     <br />
-    <RegionCard typeMarketplace={true} ownedRegion={false} regionCardData={regionCardData}/>
+    <RegionCard typeMarketplace={true} ownedRegion={false} regionData={regionData}/>
 
     <br />
     <br />
-    <RegionCard ownedRegion={false} regionCardData={regionCardData}/>
+    <RegionCard selected={true} ownedRegion={false} regionData={regionData}/>
 
     </div>
   )

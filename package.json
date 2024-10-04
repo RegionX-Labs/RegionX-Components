@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@polkadot/react-identicon": "^3.9.1",
+    "@polkadot/util-crypto": "^13.1.1",
     "@svgr/rollup": "^8.1.0",
     "@types/node": "^22.5.4",
     "postcss": "^8.4.47",
