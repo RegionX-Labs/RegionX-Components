@@ -199,11 +199,11 @@ function App() {
     <Balance name="Rococo Coretime" value="243" icon={DOT} />
     <br />
     <br />
-    <RegionCard typeMarketplace={true} ownedRegion={false} regionData={regionData}/>
+    <RegionCard typeMarketplace={true} ownedRegion={false} regionData={regionData} task='Unassigned'/>
 
     <br />
     <br />
-    <RegionCard selected={true} ownedRegion={false} regionData={regionData}/>
+    <RegionCard selected={true} ownedRegion={false} regionData={regionData} task='Parachain #2000'/>
 
     </div>
   )

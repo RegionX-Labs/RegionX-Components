@@ -1,30 +1,31 @@
 import React from 'react';
 import Slider from '../../Slider/Slider';
-import styles from './RegionCardTasks.module.scss';
+import styles from './RegionCardProperties.module.scss';
 
-interface RegionCardTasksProps {
+interface RegionCardPropertiesProps {
+    task: string;
     coreOcupaccy: number;
     consumed: number;
     currentUsage?: number;
     typeMarketplace?: boolean;
 }
 
-const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed, currentUsage, typeMarketplace = false}) => {
+const RegionCardProperties: React.FC<RegionCardPropertiesProps> = ({task, coreOcupaccy, consumed, currentUsage, typeMarketplace = false}) => {
 
     return (
         <>
         <span className={styles["disancer"]}></span>
-            <p className={styles["RegionCardTasks-headline"]}>Task: Unassinged</p>
-            <div className={styles["RegionCardTasks-slider"]}>
+            <p className={styles["RegionCardProperties-headline"]}>Task: {task}</p>
+            <div className={styles["RegionCardProperties-slider"]}>
                 <Slider initialValue={coreOcupaccy} disabled />
                 <p><b>{coreOcupaccy}%</b> Core ocupaccy</p>
             </div>
-            <div className={styles["RegionCardTasks-slider"]}>
+            <div className={styles["RegionCardProperties-slider"]}>
                 <Slider initialValue={consumed} disabled />
                 <p><b>{consumed}%</b> Consumed</p>
             </div>
             {!typeMarketplace ? ( 
-            <div className={styles["RegionCardTasks-slider"]}>
+            <div className={styles["RegionCardProperties-slider"]}>
                 <Slider initialValue={currentUsage} disabled />
                 <p><b>{currentUsage}%</b> Current usage</p>
             </div>)
@@ -35,4 +36,4 @@ const RegionCardTasks: React.FC<RegionCardTasksProps> = ({coreOcupaccy, consumed
     );
   };
 
-export default RegionCardTasks;
+export default RegionCardProperties;

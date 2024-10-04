@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './RegionCard.module.scss';
 import RegionCardHeader from './RegionCardHeader/RegionCardHeader';
-import RegionCardTasks from './RegionCardTasks/RegionCardTasks';
+import RegionCardProperties from './RegionCardProperties/RegionCardProperties';
 import LabelCard from '../LabelCard/LabelCard';
 import Button from '../Button/Button';
 import { RegionData } from '../../types/types';
@@ -11,9 +11,10 @@ interface RegionCardProps {
     ownedRegion?: boolean; // Is the region owned by the user (determines whether to show 'purchase' or 'unlist')
     selected?: boolean;
     regionData: RegionData;
+    task: string;
 }
 
-const RegionCard: React.FC<RegionCardProps> = ({typeMarketplace, ownedRegion, selected, regionData}) => {
+const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegion, selected, regionData}) => {
 
     return (
         <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'inherent'}}>
@@ -24,7 +25,8 @@ const RegionCard: React.FC<RegionCardProps> = ({typeMarketplace, ownedRegion, se
                 coreIndex={regionData.coreIndex} 
                 duration={regionData.duration} 
             />
-            <RegionCardTasks 
+            <RegionCardProperties 
+                task={task}
                 typeMarketplace={typeMarketplace} 
                 coreOcupaccy={regionData.coreOcupaccy} 
                 consumed={regionData.consumed} 
