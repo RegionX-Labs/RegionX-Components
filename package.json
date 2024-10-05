@@ -1,6 +1,6 @@
 {
   "name": "@region-x/components",
-  "version": "0.1.9",
+  "version": "0.1.16",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@polkadot/react-identicon": "^3.9.1",
+    "@polkadot/util-crypto": "^13.1.1",
     "@svgr/rollup": "^8.1.0",
     "@types/node": "^22.5.4",
     "postcss": "^8.4.47",

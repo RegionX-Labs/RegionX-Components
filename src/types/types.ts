@@ -6,17 +6,17 @@ export interface SelectOption<T> {
     icon?: React.ReactElement;
   }
 
-export interface RegionCardData {
-    cardName: string;
-    startTime: string;
-    endTime: string;
-    coreIndex: string;
-    coreHours: string;
+export interface RegionData {
+    name: string;
+    regionStart: string;
+    regionEnd: string;
+    coreIndex: number;
+    duration: string;
     coreOcupaccy: number;
     consumed: number;
     currentUsage?: number | undefined; 
-    chainLabel?: string; 
-    chainColor?: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
+    chainLabel: string; 
+    chainColor: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
     onClick?: () => void;
 }
 
