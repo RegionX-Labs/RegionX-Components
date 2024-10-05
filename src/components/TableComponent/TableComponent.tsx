@@ -21,6 +21,7 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>, column: string) => {
     const newSearchTerms = { ...searchTerms, [column]: e.target.value };
     setSearchTerms(newSearchTerms);
+    setPage(1);
     filterData(newSearchTerms);
   };
 
@@ -32,7 +33,7 @@ const TableComponent: React.FC<TableProps> = ({ data, pageSize }) => {
       )
     );
     setFilteredData(filtered);
-    setDisplayedData(getPaginatedData(filtered, page));
+    setDisplayedData(getPaginatedData(filtered, 1));
   };
 
   useEffect(() => {
