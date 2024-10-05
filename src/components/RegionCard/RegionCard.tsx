@@ -17,7 +17,7 @@ interface RegionCardProps {
 const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegion, selected, regionData}) => {
 
     return (
-        <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'inherent'}}>
+        <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'white'}}>
             <RegionCardHeader 
                 name={regionData.name} 
                 regionStart={regionData.regionStart} 
