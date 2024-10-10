@@ -20,4 +20,15 @@
         justify-content: center;
         color: $dark5;
     }
+
+    .priceWrapper {
+        display: flex;
+        justify-content: space-between;
+
+        h4 {
+            @include Inter;
+            margin: 1rem 1rem;
+            font-weight: 500;
+        }
+    }
 }
