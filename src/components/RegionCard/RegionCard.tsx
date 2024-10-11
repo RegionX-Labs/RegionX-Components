@@ -12,9 +12,11 @@ interface RegionCardProps {
     selected?: boolean;
     regionData: RegionData;
     task: string;
+    salePrice?: string;
+    pricePerTimeslice?: string;
 }
 
-const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegion, selected, regionData}) => {
+const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegion, selected, regionData, salePrice, pricePerTimeslice}) => {
 
     return (
         <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'white'}}>
@@ -32,13 +34,19 @@ const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegi
                 consumed={regionData.consumed} 
                 currentUsage={regionData.currentUsage} 
             />
+            {typeMarketplace &&
+                <div className={styles["priceWrapper"]}>
+                    <h4>Price: {salePrice}</h4>
+                    <h4>Per timeslice: {pricePerTimeslice}</h4>
+                </div>
+            }
             { !typeMarketplace && regionData.chainLabel && regionData.chainColor ? 
                 <div className={styles["regionCardWrapper-labels"]}>
                     <LabelCard label='Renewable' color='yellowDark' variant='primary' />
                     <LabelCard label={regionData.chainLabel} color={regionData.chainColor} variant='primary'  />
                 </div>
                 : 
-                <Button onClick={regionData.onClick} color='gray3'>{!ownedRegion ? 'Unlist' : 'Purchase'}</Button>
+                <Button fullWidth onClick={regionData.onClick} color='greenPrimary'>{ownedRegion ? 'Unlist' : 'Purchase'}</Button>
             }
         </div>
     );
