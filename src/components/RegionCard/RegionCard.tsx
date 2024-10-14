@@ -21,6 +21,7 @@ const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegi
     return (
         <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'white'}}>
             <RegionCardHeader 
+                rawId={regionData.rawId}
                 name={regionData.name} 
                 regionStart={regionData.regionStart} 
                 regionEnd={regionData.regionEnd} 

@@ -20,6 +20,7 @@ function App() {
   }
 
   const regionData: RegionData =  {
+    rawId: '5432',
     name: 'Region #2',
     regionStart: 'Started 10 days ago',
     regionEnd: 'Ends in 18 days',

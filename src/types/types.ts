@@ -7,6 +7,7 @@ export interface SelectOption<T> {
   }
 
 export interface RegionData {
+    rawId: string;
     name: string;
     regionStart: string;
     regionEnd: string;
