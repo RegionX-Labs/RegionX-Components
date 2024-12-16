@@ -5,5 +5,7 @@ export { default as Slider } from './components/Slider/Slider';
 export { default as Select } from './components/Select/Select';
 export { default as Balance } from './components/Balance/Balance';
 export { default as RegionCard } from './components/RegionCard/RegionCard';
+export { default as RegionCardHeader } from './components/RegionCard/RegionCardHeader/RegionCardHeader';
+export { RegionMinimal } from './components/RegionCard/RegionCardHeader/RegionCardHeader';
 export { default as AmountInput } from './components/AmountInput/AmountInput';
 export { default as TableComponent } from './components/TableComponent/TableComponent';

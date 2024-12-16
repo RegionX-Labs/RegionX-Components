@@ -20,6 +20,7 @@ function App() {
   }
 
   const regionData: RegionData =  {
+    rawId: '5432',
     name: 'Region #2',
     regionStart: 'Started 10 days ago',
     regionEnd: 'Ends in 18 days',
@@ -199,7 +200,7 @@ function App() {
     <Balance name="Rococo Coretime" value="243" icon={DOT} />
     <br />
     <br />
-    <RegionCard typeMarketplace={true} ownedRegion={false} regionData={regionData} task='Unassigned'/>
+    <RegionCard typeMarketplace={true} ownedRegion={false} regionData={regionData} task='Unassigned' salePrice='100 DOT' pricePerTimeslice='1 DOT'/>
 
     <br />
     <br />
