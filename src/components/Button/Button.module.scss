@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .buttonWrapper {
   background-color: var(--button-color);
@@ -97,7 +97,7 @@ $radius: -200%;
     @for $el from 1 through $no-of-el {
       &:nth-child(#{$el}) {
         animation-delay: #{$el * .15s};
-        background-color: transparentize($color, (($el / 2) * 20) / 100);
+        background-color: rgba($color, 1 - calc((calc($el / 2) * 20) / 100));
       }
     }
   }

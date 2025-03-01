@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .sliderWrapper {
     position: relative;
@@ -99,7 +99,7 @@
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: lighten($dark, 20%);
+        background-color: mix(white, $dark, 20%);
       }
     }
   
@@ -113,7 +113,7 @@
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: lighten($dark, 20%);
+        background-color: mix(white, $dark, 20%);
       }
     }
   
