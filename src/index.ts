@@ -1,3 +1,5 @@
+import './styles/global.scss';
+
 export { default as LabelCard } from './components/LabelCard/LabelCard';
 export { default as Button } from './components/Button/Button';
 export { default as AddressInput } from './components/AddressInput/AddressInput';
