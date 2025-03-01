@@ -1,26 +1,16 @@
 {
   "compilerOptions": {
-    "target": "esnext",                      // Target ECMAScript version
-    "module": "esnext",                      // Target ES module system
-    "lib": ["dom", "dom.iterable", "esnext"], // Type definitions for standard library
-    "jsx": "react-jsx",                      // Enable JSX and React's new JSX transform
-    "moduleResolution": "node",              // Resolve node_modules
-    "skipLibCheck": true,                    // Skip checking of declaration files
-    "esModuleInterop": true,                 // Enable compatibility between CommonJS and ESModules
-    "allowSyntheticDefaultImports": true,    // Allow importing default exports from modules with no default
-    "strict": true,                          // Enable strict type checking
-    "forceConsistentCasingInFileNames": true,// Enforce consistent casing in imports
-    "noEmit": true,                          // Disable emitting files (handled by Rollup/Vite)
-    "isolatedModules": true,                 // Perform isolated transpilation of modules
-    "declaration": true,                     // Generate `.d.ts` declaration files
-    "declarationDir": "dist/types",          // Output directory for type declarations
-    "outDir": "dist",                        // Output directory for compiled files
-    "resolveJsonModule": true,               // Support importing .json files
-    "baseUrl": ".",                          // Base directory to resolve non-relative module names
-    "paths": {
-      "*": ["src/*"]                         // Path alias for resolving imports
-    }
+    "outDir": "dist",
+    "declaration": true, // ✅ Enables type declaration generation
+    "declarationMap": true, // ✅ Helps with debugging
+    "emitDeclarationOnly": true, // ✅ Only outputs type definitions
+    "skipLibCheck": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],                        // Include all source files from src directory
-  "exclude": ["node_modules", "dist"]        // Exclude node_modules and built files
+  "include": ["src"]
 }

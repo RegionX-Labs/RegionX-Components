@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from '../Select/Select';
 import styles from './AmountInput.module.scss';
-import { SelectOption } from 'types/types';
+import { SelectOption } from '../../types/types';
 
 interface AmountInputProps {
   currencyOptions: SelectOption<string>[]; // Options for the currency selector
