@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styles from './Select.module.scss';
-import Input from '../AddressInput/AddressInput'; 
-import DownArrow from '../../assets/icons/DownArrow.svg';
-import { SelectOption } from '../../types/types';
+import React, { useEffect, useRef, useState } from "react";
+import styles from "./Select.module.scss";
+import Input from "../AddressInput/AddressInput";
+import DownArrow from "../../assets/icons/DownArrow.svg";
+import { SelectOption } from "../../types/types";
 
 interface SelectProps<T> {
   options: SelectOption<T | null>[];
@@ -23,7 +23,7 @@ const Select = <T,>({
   selectedValue = null,
   showOnlySelectedIcon = false,
 }: SelectProps<T>) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState<T | null>(selectedValue);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,37 +40,51 @@ const Select = <T,>({
     if (onChange) onChange(value);
   };
 
-  const filteredOptions = options.filter(option =>
-    option.label.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredOptions = options.filter(
+    (option) =>
+      typeof option.label === "string" &&
+      option.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const selectedOption = options.find(option => option.value === selected);
+  const selectedOption = options.find((option) => option.value === selected);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
 
-  const selectClassName = `${styles.selectBox} ${disabled ? styles['selectBox-disabled'] : ''}`;
+  const selectClassName = `${styles.selectBox} ${
+    disabled ? styles["selectBox-disabled"] : ""
+  }`;
 
   return (
     <div className={styles["selectWrapper"]} ref={dropdownRef}>
-      {label && <label className={styles["selectWrapper-label"]}>{label}</label>}
-      <div className={selectClassName} onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}>
+      {label && (
+        <label className={styles["selectWrapper-label"]}>{label}</label>
+      )}
+      <div
+        className={selectClassName}
+        onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}
+      >
         {selectedOption ? (
           <div className={styles["selectedOptionDisplay"]}>
             {selectedOption.icon}
             {!showOnlySelectedIcon && <span>{selectedOption.label}</span>}
           </div>
-        ) : 'Select an option'}
+        ) : (
+          "Select an option"
+        )}
         <span className={styles["selectBox-arrow"]}>
           <img src={DownArrow} alt="arrow down" />
         </span>
@@ -81,15 +95,21 @@ const Select = <T,>({
           {searchable && (
             <Input
               value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search..."
               disabled={disabled}
             />
           )}
 
           <ul className={styles["selectDropdown-optionList"]}>
-            {filteredOptions.map(option => (
-              <li key={option.label} onClick={() => handleOptionClick(option.value)} className={`${styles['selectDropdown-optionList-optionItem']} ${option.value === selected ? styles['selected'] : ''}`}>
+            {filteredOptions.map((option) => (
+              <li
+                key={option.label}
+                onClick={() => handleOptionClick(option.value)}
+                className={`${styles["selectDropdown-optionList-optionItem"]} ${
+                  option.value === selected ? styles["selected"] : ""
+                }`}
+              >
                 {option.icon}
                 {option.label}
               </li>
