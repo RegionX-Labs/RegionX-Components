@@ -18,6 +18,8 @@ export interface RegionData {
     chainLabel: string; 
     chainColor: 'yellowDark' | 'greenDark' | 'orangeDark' | 'pinkDark' | 'cyan' | 'redDark' | 'purpleDark' | 'teal' | 'blueDark' | 'gray6' | 'dark5' | 'gray5' | 'greenPrimary';
     onClick?: () => void;
+    onUnlist?: () => void;
+    onPurchase?: () => void;
 }
 
 export type TableData = {

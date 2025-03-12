@@ -17,7 +17,7 @@ interface RegionCardProps {
 const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegion, selected, regionData}) => {
 
     return (
-        <div className={styles["regionCardWrapper"]} style={{backgroundColor: selected ? `var(--lightGray)` : 'white'}}>
+        <div className={styles["regionCardWrapper"]} onClick={regionData.onClick} style={{backgroundColor: selected ? `var(--lightGray)` : 'white'}}>
             <RegionCardHeader 
                 name={regionData.name} 
                 regionStart={regionData.regionStart} 
@@ -38,7 +38,7 @@ const RegionCard: React.FC<RegionCardProps> = ({task, typeMarketplace, ownedRegi
                     <LabelCard label={regionData.chainLabel} color={regionData.chainColor} variant='primary'  />
                 </div>
                 : 
-                <Button onClick={regionData.onClick} color='gray3'>{!ownedRegion ? 'Unlist' : 'Purchase'}</Button>
+                <Button onClick={!ownedRegion ? regionData.onUnlist : regionData.onPurchase} color='gray3'>{!ownedRegion ? 'Unlist' : 'Purchase'}</Button>
             }
         </div>
     );
