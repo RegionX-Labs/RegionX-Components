@@ -15,7 +15,6 @@ interface RegionCardHeaderProps {
 const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({name, regionStart, regionEnd, coreIndex, duration}) => {
   const publicKey = blake2AsU8a(`${regionStart}-${regionEnd}-${coreIndex}`);
   const ss58Address = encodeAddress(publicKey, 42);
-  console.log(publicKey);
   
   return (
       <>
