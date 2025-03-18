@@ -8,7 +8,7 @@ interface SelectProps<T> {
   options: SelectOption<T | null>[];
   searchable?: boolean;
   onChange?: (value: T | null) => void;
-  label?: string;
+  placeholder?: string;
   disabled?: boolean;
   selectedValue?: T | null;
   showOnlySelectedIcon?: boolean;
@@ -18,7 +18,7 @@ const Select = <T,>({
   options,
   searchable = false,
   onChange,
-  label,
+  placeholder = 'Select an option',
   disabled = false,
   selectedValue = null,
   showOnlySelectedIcon = false,
@@ -63,14 +63,13 @@ const Select = <T,>({
 
   return (
     <div className={styles["selectWrapper"]} ref={dropdownRef}>
-      {label && <label className={styles["selectWrapper-label"]}>{label}</label>}
       <div className={selectClassName} onClick={() => !disabled && setIsDropdownOpen(!isDropdownOpen)}>
         {selectedOption ? (
           <div className={styles["selectedOptionDisplay"]}>
             {selectedOption.icon}
             {!showOnlySelectedIcon && <span>{selectedOption.label}</span>}
           </div>
-        ) : 'Select an option'}
+        ) : placeholder}
         <span className={styles["selectBox-arrow"]}>
           <img src={DownArrow} alt="arrow down" />
         </span>
