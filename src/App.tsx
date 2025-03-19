@@ -193,7 +193,7 @@ function App() {
     />  
     <br />
     <br />
-    <Select label="Select options" options={selectOptions} searchable={true} onChange={handleSelectChange}/>
+    <Select placeholder='Select something' options={selectOptions} searchable={true} onChange={handleSelectChange}/>
     <br />
     <br />
     <Balance name="Rococo Coretime" value="243" icon={DOT} />
