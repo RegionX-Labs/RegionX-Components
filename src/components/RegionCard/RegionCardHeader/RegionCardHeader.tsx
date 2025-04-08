@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LabelCard from "../../LabelCard/LabelCard";
 import styles from "./RegionCardHeader.module.scss";
 import Identicon from "@polkadot/react-identicon";
@@ -27,6 +27,10 @@ const RegionCardHeader: React.FC<RegionCardHeaderProps> = ({
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(name);
+
+  useEffect(() => {
+    setEditedName(name);
+  }, [name]);
 
   const handleSave = () => {
     setIsEditing(false);
